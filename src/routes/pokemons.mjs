@@ -1,5 +1,5 @@
 import express from "express";
-import { pokemons, getUniqueId } from "../db/mock-pokemon.mjs";
+import { pokemons, getUniqueId, updatePokemon, getPokemons } from "../db/mock-pokemon.mjs";
 
 const pokemonsRouter = express();
 
@@ -21,6 +21,21 @@ pokemonsRouter.post("/", (req, res) => {
     pokemons.push(createdPokemon);
     const message = `Le pokemon ${createdPokemon.name} a bien été créé !`;
     res.json({message, createdPokemon});
+});
+
+pokemonsRouter.put("/:id", (req, res) => {
+    const pokemonId = req.params.id;
+    const pokemon = getPokemons(pokemonId);
+
+    const updatedPokemon = {
+        id: pokemonId,
+        ...req.body,
+        created: pokemon.created,
+    };
+    updatePokemon(pokemonId, updatedPokemon);
+
+    const message = `Le pokemon ${updatedPokemon.name} a été mis à jour !`;
+    res.json({message, updatedPokemon});
 });
 
 export { pokemonsRouter };

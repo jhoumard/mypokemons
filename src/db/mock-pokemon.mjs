@@ -140,4 +140,13 @@ const getUniqueId = () => {
   return UniqueId;
 };
 
-export { pokemons, getUniqueId };
+const updatePokemon = (pokemonId, updatedPokemon) => {
+  const pokemonsUp = pokemons.map((pokemon) => pokemon.id == pokemonId ? updatedPokemon : pokemon);
+  return pokemonsUp;
+};
+
+const getPokemons = (pokemonId) => {
+  return pokemons.find((pokemon) => pokemon.id == pokemonId);
+};
+
+export { pokemons, getUniqueId, updatePokemon, getPokemons };
