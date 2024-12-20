@@ -133,4 +133,11 @@ const pokemons = [
   },
 ];
 
-export { pokemons };
+const getUniqueId = () => {
+  const pokemonsIds = pokemons.map((pokemon) => pokemon.id);
+  const maxId = pokemonsIds.reduce((a, b) => Math.max(a, b));
+  const UniqueId = maxId + 1;
+  return UniqueId;
+};
+
+export { pokemons, getUniqueId };
