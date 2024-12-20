@@ -1,4 +1,10 @@
-const pokemons = [
+/*
+Author : Jérémie Chevalley
+Date : 20.12.2024
+Description : Database des pokémons
+*/
+
+let pokemons = [
   {
     id: 1,
     name: "Bulbizarre",
@@ -133,4 +139,21 @@ const pokemons = [
   },
 ];
 
-export { pokemons };
+//Récupère le pokemon dont l'id vaut `pokemonId`
+const getPokemon = (pokemonId) => {
+  return pokemons.find((pokemon) => pokemon.id == pokemonId);
+};
+
+//Supprime le pokemon dont l'id vaut `pokemonId`
+const removePokemon = (pokemonId) => {
+  pokemons = pokemons.filter((pokemon) => pokemon.id != pokemonId);
+};
+
+//Met à jour le pokemon dont l'id vaut `pokemonId`
+const updatePokemon = (pokemonId, updatedPokemon) => {
+  pokemons = pokemons.map((pokemon) =>
+      pokemon.id == pokemonId ? updatedPokemon : pokemon
+  );
+};
+
+export { pokemons, getPokemon, removePokemon, updatePokemon };

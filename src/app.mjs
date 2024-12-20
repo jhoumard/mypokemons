@@ -1,3 +1,9 @@
+/*
+Author : Jérémie Chevalley
+Date : 20.12.2024
+Description : API REST pour servir des pokemons
+*/
+
 import express from "express";
 
 const app = express();
