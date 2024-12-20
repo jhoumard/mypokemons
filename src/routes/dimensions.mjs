@@ -8,4 +8,11 @@ dimensionsRouter.get("/", (req, res) => {
     res.json({ message, data: dimensions });
 });
 
+dimensionsRouter.get("/:id", (req, res) => {
+    const dimensionId = req.params.id;
+    const dimension = dimensions.find((dimension) => dimension.id == dimensionId);
+    const message = `La dimension dont l'id vaut ${dimensionId} a bien été récupérée !`;
+    res.json({ message, dimension });
+});
+
 export { dimensionsRouter };
