@@ -48,4 +48,12 @@ pokemonsRouter.delete("/:id", (req, res) => {
     res.json({message, deletedPokemon});
 });
 
+//pokemonsRouter.get("/:id", (req, res) => {
+//    const dimensionId = req.params.id;
+//
+//    const pokemon = pokemons.map((pokemon) => pokemon.dimensionId == dimensionId);
+//    const message = `La liste des pokémons de la dimension ${dimensionId.name} a bien été récupérée !`;
+//    res.json({message, pokemon})
+//});
+
 export { pokemonsRouter };
