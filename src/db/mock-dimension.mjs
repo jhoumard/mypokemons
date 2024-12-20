@@ -22,4 +22,9 @@ const dimensions = [
   },
 ];
 
-export { dimensions };
+//Récupère le dimension dont l'id vaut `dimensionId`
+const getDimension = (dimensionId) => {
+  return dimensions.find((dimension) => dimension.id == dimensionId);
+};
+
+export { dimensions, getDimension };
