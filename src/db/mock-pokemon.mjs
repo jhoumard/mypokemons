@@ -1,4 +1,10 @@
-const pokemons = [
+/*
+* Auteur : Samuel Gergely
+* Date : 20.12.2024
+* Description : liste de pokemons et de dimensions de l'univer fictif "Pokemon"
+* */
+
+let pokemons = [
   {
     id: 1,
     name: "Bulbizarre",
