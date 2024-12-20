@@ -5,8 +5,10 @@ const port = 3000;
 
 app.use(express.json());
 
+var visits = 0;
 app.get('/', (req, res) => {
-  res.send(`Hello, pokemons!`);
+  visits++;
+  res.send(`Hello, pokemons! (${visits} visites)`);
 });
 
 import { pokemonsRouter } from "./routes/pokemons.mjs";
