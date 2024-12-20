@@ -15,4 +15,12 @@ dimensionsRouter.get("/", (req, res) => {
     res.json({ message, data: dimensions });
 });
 
+// Obtenir une dimension par ID
+dimensionsRouter.get("/:id", (req, res) => {
+    const dimensionId = req.params.id;
+    const dimension = dimensions.find((dimension) => dimension.id == dimensionId);
+    const message = `Le dimension dont l'id vaut ${dimensionId} a bien été récupéré.`;
+    res.json(success(message, dimension));
+});
+
 export { dimensionsRouter };

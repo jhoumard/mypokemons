@@ -9,17 +9,20 @@ import { success, getUniqueId } from "./helper.mjs";
 
 const pokemonsRouter = express();
 
+// Obtenir un pokemon
 pokemonsRouter.get("/", (req, res) => {
     const message = "La liste des pokemons a bien été récupérée !";
     res.json({ message, data: pokemons });
 });
 
+// Obtenir un pokemon par ID
 pokemonsRouter.get("/:id", (req, res) => {
     const pokemonId = req.params.id;
     const pokemon = pokemons.find((pokemon) => pokemon.id == pokemonId);
     const message = `Le pokemon dont l'id vaut ${pokemonId} a bien été récupéré.`;
     res.json(success(message, pokemon));
 });
+
 
 // Création d'un nouveau pokemon
 pokemonsRouter.post("/", (req, res) => {
@@ -37,6 +40,7 @@ pokemonsRouter.post("/", (req, res) => {
     // Retourner la réponse HTTP en json avec le msg et le pokemon ajouté
     res.json(success(message, createdPokemon));
 });
+
 
 // Mise à jour du pokemon
 pokemonsRouter.put("/:id", (req, res) => {
@@ -56,6 +60,17 @@ pokemonsRouter.put("/:id", (req, res) => {
 
     // Retourner la réponse HTTP en json avec le msg et le pokemon créé
     res.json(success(message, updatedPokemon));
+});
+
+// Supprimer un Pokemon
+pokemonsRouter.delete("/:id", (req, res) => {
+    const pokemonId = req.params.id;
+    let deletedPokemon = getPokemon(pokemonId);
+    removePokemon(pokemonId);
+    // Définir un message pour le consommateur de l'API REST
+    const message = `Le produit ${deletedPokemon.name} a bien été supprimé !`;
+    // Retourner la réponse HTTP en json avec le msg et le produit créé
+    res.json(success(message, deletedPokemon));
 });
 
 export { pokemonsRouter };
