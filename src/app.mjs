@@ -16,5 +16,5 @@ import { dimensionsRouter } from "./routes/dimensions.mjs";
 app.use("/api/dimensions", dimensionsRouter);
 
 app.listen(port, () =>
-  console.log(`Notre application est démarée sur : http://localhost:${port}`);
+  console.log(`Notre application est démarée sur : http://localhost:${port}`)
 );
