@@ -6,3 +6,5 @@ git checkout -b <branch_name>
 2. Installer Express et Nodemon:  
 npm install express --save  
 npm install nodemon --save-dev
+
+3. J'ai l'impressions que le temps donnés était un peu court pour tous ce qui est demandé. Sinon, avec les exercices que l'ont a fait ont beaucoup aidé pour le test.
