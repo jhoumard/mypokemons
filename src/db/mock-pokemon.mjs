@@ -1,4 +1,5 @@
-const pokemons = [
+// changed to a variable that could get changed to try out the PUT
+let pokemons = [
   {
     id: 1,
     name: "Bulbizarre",
@@ -141,12 +142,15 @@ const getUniqueId = () => {
 };
 
 const updatePokemon = (pokemonId, updatedPokemon) => {
-  const pokemonsUp = pokemons.map((pokemon) => pokemon.id == pokemonId ? updatedPokemon : pokemon);
-  return pokemonsUp;
+  pokemons = pokemons.map((pokemon) => pokemon.id == pokemonId ? updatedPokemon : pokemon);
 };
 
 const getPokemons = (pokemonId) => {
   return pokemons.find((pokemon) => pokemon.id == pokemonId);
 };
 
-export { pokemons, getUniqueId, updatePokemon, getPokemons };
+const removePokemon = (pokemonId) => {
+  pokemons = pokemons.filter((pokemon) => pokemon.id != pokemonId);
+};
+
+export { pokemons, getUniqueId, updatePokemon, getPokemons, removePokemon };
