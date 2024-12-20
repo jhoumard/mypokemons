@@ -8,4 +8,11 @@ pokemonsRouter.get("/", (req, res) => {
     res.json({ message, data: pokemons });
 });
 
+pokemonsRouter.get("/:id", (req, res) => {
+    const pokemonId = req.params.id;
+    const pokemon = pokemons.find((pokemon) => pokemon.id == pokemonId);
+    const message = `Le pokemon dont l'id est ${pokemonId} a été récupéré !`;
+    res.json({message, data: pokemon})
+});
+
 export { pokemonsRouter };
