@@ -1,4 +1,4 @@
-const pokemons = [
+let pokemons = [
   {
     id: 1,
     name: "Bulbizarre",
@@ -133,4 +133,12 @@ const pokemons = [
   },
 ];
 
-export { pokemons };
+const getPokemon = (id) => {
+  return pokemons.find(x => x.id == id);
+};
+
+const updatePokemon = (id, updatedPokemon) => {
+  pokemons = pokemons.map(x => x.id == id ? updatedPokemon : x);
+};
+
+export { pokemons, getPokemon, updatePokemon };

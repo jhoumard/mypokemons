@@ -1,5 +1,5 @@
 import express from "express";
-import { pokemons } from "../db/mock-pokemon.mjs";
+import { pokemons, getPokemon, updatePokemon } from "../db/mock-pokemon.mjs";
 import { getUniqueId } from "./helpers.mjs";
 
 const pokemonsRouter = express();
@@ -23,6 +23,16 @@ pokemonsRouter.post("/", (req, res) => {
 
     const message = `Le pokemon ${createdPok.name} a bien été créé !`;
     res.json({ message, data: createdPok });
+});
+
+pokemonsRouter.put("/:id", (req, res) => {
+    const id = req.params.id;
+    const pok = getPokemon(id);
+    const updatedPok = { id: id, ...req.body, created: pok.created }; // A noter que la propriété 'created' n'étant pas modifiée, sera conservée telle quelle.
+    updatePokemon(id, updatedPok);
+
+    const message = `Le pokemon ${updatedPok.name} a bien été modifié !`;
+    res.json({ message, data: updatedPok });
 });
 
 export { pokemonsRouter };
