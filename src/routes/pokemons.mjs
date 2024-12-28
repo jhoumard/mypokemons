@@ -11,7 +11,7 @@ pokemonsRouter.get("/", (req, res) => {
 
 pokemonsRouter.get("/:id", (req, res) => {
     const id = req.params.id;
-    const pok = pokemons.find(x => x.id == id);
+    const pok = getPokemon(id);
     const message = `Le pokemon dont l'id vaut ${id} a bien été récupéré.`;
     res.json({ message, data: pok });
 });
