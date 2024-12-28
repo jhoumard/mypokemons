@@ -10,9 +10,9 @@ dimensionsRouter.get("/", (req, res) => {
 
 dimensionsRouter.get("/:id", (req, res) => {
     const id = req.params.id;
-    const pok = dimensions.find(x => x.id == id);
+    const dim = dimensions.find(x => x.id == id);
     const message = `La dimension dont l'id vaut ${id} a bien été récupérée.`;
-    res.json({ message, data: pok });
+    res.json({ message, data: dim });
 });
 
 export { dimensionsRouter };
