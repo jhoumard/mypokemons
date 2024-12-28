@@ -141,4 +141,8 @@ const updatePokemon = (id, updatedPokemon) => {
   pokemons = pokemons.map(x => x.id == id ? updatedPokemon : x);
 };
 
-export { pokemons, getPokemon, updatePokemon };
+const removePokemon = (id) => {
+  pokemons = pokemons.filter(x => x.id != id);
+};
+
+export { pokemons, getPokemon, updatePokemon, removePokemon };

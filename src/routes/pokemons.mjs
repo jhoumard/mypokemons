@@ -1,5 +1,5 @@
 import express from "express";
-import { pokemons, getPokemon, updatePokemon } from "../db/mock-pokemon.mjs";
+import { pokemons, getPokemon, updatePokemon, removePokemon } from "../db/mock-pokemon.mjs";
 import { getUniqueId } from "./helpers.mjs";
 
 const pokemonsRouter = express();
@@ -33,6 +33,15 @@ pokemonsRouter.put("/:id", (req, res) => {
 
     const message = `Le pokemon ${updatedPok.name} a bien été modifié !`;
     res.json({ message, data: updatedPok });
+});
+
+pokemonsRouter.delete("/:id", (req, res) => {
+    const id = req.params.id;
+    let deletedPok = getPokemon(id);
+    removePokemon(id);
+
+    const message = `Le pokemon ${deletedPok.name} a bien été supprimé !`;
+    res.json({ message, data: deletedPok });
 });
 
 export { pokemonsRouter };
