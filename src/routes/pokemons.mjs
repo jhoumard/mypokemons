@@ -9,6 +9,7 @@ pokemonsRouter.get("/", (req, res) => {
     res.json({ message, data: pokemons });
 });
 
+// 2. Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
     const id = req.params.id;
     const pok = getPokemon(id);
@@ -16,6 +17,7 @@ pokemonsRouter.get("/:id", (req, res) => {
     res.json({ message, data: pok });
 });
 
+// 3. Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
     const id = getUniqueId(pokemons);
     const createdPok = { ...req.body, ...{ id: id, created: new Date() } };
@@ -25,6 +27,7 @@ pokemonsRouter.post("/", (req, res) => {
     res.json({ message, data: createdPok });
 });
 
+// 4. Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
     const id = req.params.id;
     const pok = getPokemon(id);
@@ -35,6 +38,7 @@ pokemonsRouter.put("/:id", (req, res) => {
     res.json({ message, data: updatedPok });
 });
 
+// 5. Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
     const id = req.params.id;
     let deletedPok = getPokemon(id);

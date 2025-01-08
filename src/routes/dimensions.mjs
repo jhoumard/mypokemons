@@ -9,6 +9,7 @@ dimensionsRouter.get("/", (req, res) => {
     res.json({ message, data: dimensions });
 });
 
+// 6. Obtenir une dimension en particulier.
 dimensionsRouter.get("/:id", (req, res) => {
     const id = req.params.id;
     const dim = getDimension(id);
@@ -16,6 +17,8 @@ dimensionsRouter.get("/:id", (req, res) => {
     res.json({ message, data: dim });
 });
 
+// 7. Obtenir les pokemons d’une dimension en particulier.
+//    Le message doit contenir l’ID et le nom de la dimension.
 dimensionsRouter.get("/:id/pokemons", (req, res) => {
     const dim_id = req.params.id;
     const dim = getDimension(dim_id);
