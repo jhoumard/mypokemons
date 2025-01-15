@@ -13,4 +13,28 @@ const sequelize = new Sequelize(
     }
 );
 
-export { sequelize };
+import { pokemons } from "./mock-pokemon.mjs";
+import { PokemonModel } from "../models/pokemons.mjs";
+
+// Le modèle pokemon
+const Pokemon = PokemonModel(sequelize, DataTypes);
+let initDb = () => {
+    return sequelize
+        .sync({ force: true }) // Force la synchro => donc supprime les données également
+        .then((_) => {
+            importPokemons();
+            console.log("La base de données a bien été synchronisée");
+        });
+};
+
+const importPokemons = () => {
+    // import tous les pokemons présents dans le fichier db/mock-pokemon
+    pokemons.map(p => {
+        Pokemon.create({
+            name: p.name,
+            dimensionId: p.dimensionId,
+        }).then(p => console.log(p.toJSON()));
+    });
+};
+
+export { sequelize, initDb, Pokemon };

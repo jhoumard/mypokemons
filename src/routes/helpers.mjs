@@ -1,7 +1,8 @@
-const getUniqueId = (items) => {
-    const ids = items.map(x => x.id);
-    const maxId = ids.reduce((a, b) => Math.max(a, b));
-    return maxId + 1;
+const success = (message, data) => {
+    return {
+        message: message,
+        data: data,
+    };
 };
 
-export { getUniqueId };
+export { success };

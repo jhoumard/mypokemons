@@ -133,16 +133,4 @@ let pokemons = [
   },
 ];
 
-const getPokemon = (id) => {
-  return pokemons.find(x => x.id == id);
-};
-
-const updatePokemon = (id, updatedPokemon) => {
-  pokemons = pokemons.map(x => x.id == id ? updatedPokemon : x);
-};
-
-const removePokemon = (id) => {
-  pokemons = pokemons.filter(x => x.id != id);
-};
-
-export { pokemons, getPokemon, updatePokemon, removePokemon };
+export { pokemons };

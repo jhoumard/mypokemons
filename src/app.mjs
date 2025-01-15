@@ -1,5 +1,5 @@
 import express from "express";
-import { sequelize } from "./db/sequelize.mjs";
+import { initDb, sequelize } from "./db/sequelize.mjs";
 
 const app = express();
 const port = 3000;
@@ -10,6 +10,8 @@ sequelize
   .authenticate()
   .then((_) => console.log("La connexion à la base de données a bien été établie"))
   .catch((error) => console.error(`Impossible de se connecter à la DB: ${error}`));
+
+initDb();
 
 // Compteur d’appels à la route «home» de l’application (http://localhost:3000/) depuis le démarrage de celle-ci.
 var visits = 0;
