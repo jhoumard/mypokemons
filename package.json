@@ -1,7 +1,7 @@
 {
   "name": "pokemon-api",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "API REST pour servir des pokemons",
   "main": "src/app.mjs",
   "scripts": {
