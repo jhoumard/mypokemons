@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodemon src/app.mjs"
   },
-  "author": "GregLeBarbar",
+  "author": "Thanavine Le Cocq",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.2",
