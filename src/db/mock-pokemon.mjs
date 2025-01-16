@@ -1,3 +1,8 @@
+/*
+Auteur: Vikki Dolt
+Date: 20.12.2024
+*/ 
+
 const pokemons = [
   {
     id: 1,
@@ -133,4 +138,26 @@ const pokemons = [
   },
 ];
 
-export { pokemons };
+const getUniqueId = () => {
+const pokemonsIds = pokemons.map((pokemon) => pokemon.id);
+ const maxId = pokemonsIds.reduce((a, b) => Math.max(a, b));
+ const uniqueId = maxId + 1;
+ return uniqueId;
+};
+
+const getPokemon = (pokemonId) => {
+  return pokemons.find((pokemon) => pokemon.id == pokemonId);
+};
+
+const updatePokemon = (pokemonId, updatedPokemon) => {
+  pokemons = pokemons.map((pokemon) =>
+      pokemon.id == pokemonId ? updatedPokemon : pokemon
+  );
+};
+
+const removePokemon = (pokemonId) => {
+  pokemons = pokemons.filter((pokemon) => pokemon.id != pokemonId);
+};
+  
+
+export { pokemons, getUniqueId, getPokemon, updatePokemon, removePokemon };

@@ -1,12 +1,21 @@
+/*
+Auteur: Vikki Dolt
+Date: 20.12.2024
+*/ 
+
 import express from "express";
 
 const app = express();
+app.use(express.json());
 const port = 3000;
+
+let compteur = 0;
 
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send(`Hello, pokemons!`);
+  compteur += 1;
+  res.send(`Hello, pokemons! (${compteur} visites)`);
 });
 
 import { pokemonsRouter } from "./routes/pokemons.mjs";
