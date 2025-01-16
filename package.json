@@ -1,13 +1,13 @@
 {
   "name": "pokemon-api",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "description": "API REST pour servir des pokemons",
   "main": "src/app.mjs",
   "scripts": {
     "start": "nodemon src/app.mjs"
   },
-  "author": "GregLeBarbar",
+  "author": "Jérémie Chevalley",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.2",

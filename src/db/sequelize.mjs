@@ -6,7 +6,7 @@ const sequelize = new Sequelize(
     DB_USER,        // Nom de l'utilisateur
     DB_PASSWORD,    // Mot de passe de l'utilisateur
     {
-        host: "127.0.0.1",
+        host: "localhost",
         //port: "3306",
         dialect: "mysql",
         logging: false,
