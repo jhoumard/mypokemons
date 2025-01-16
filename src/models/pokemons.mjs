@@ -1,5 +1,3 @@
-// https://sequelize.org/docs/v7/models/data-types/
-
 const PokemonModel = (sequelize, DataTypes) => {
     return sequelize.define(
         "Pokemon",
