@@ -63,12 +63,33 @@ pokemonsRouter.post("/", (req, res) => {
 
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
-
+    const pokemonId = req.params.id;
+    Pokemon.update(req.body, {where: {id: pokemonId} })
+    .then((_) =>{
+        const message = 
+        "exercise ne permets pas"
+        return res.status(403).json({ message});
+    })
+    .catch((error) =>{
+        const message =
+        "Il n'est pas possible d'acceder à la base de données Pokemon. "
+        res.status(500).json({message, data:error});
+    });
 });
 
 // Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
-
+    Pokemon.findByPk(req.params.id)
+    .then(() => {
+        const message =
+        "La base de données de Pokemon ne peut pas etre accedée. "
+        res.status(500).json({ message, data: error})
+    })
+    .catch((error) => {
+        const message = 
+        "Le Pokemon n'a pas pu être supprimé. Merci de réessayer dans quelques instants.";
+        res.status(403).json({ message, data: error});
+    });
 });
 
 export { pokemonsRouter };
