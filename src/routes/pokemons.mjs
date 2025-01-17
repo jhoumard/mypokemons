@@ -64,7 +64,33 @@ pokemonsRouter.post("/", (req, res) => {
 
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
-
+    const pokemonId = req.params.id;
+    Pokemon.update(req.body, { where: { id: pokemontId } })
+        .then((_) => {
+            return Pokemon.findByPk(pokemontId)
+                .then((updatedPokemon) => {
+                    if (updatedPokemon === null) {
+                        const message =
+                            "Le pokemon demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
+                        // A noter ici le return pour interrompre l'exécution du code
+                        return res.status(404).json({ message });
+                    }
+                    // Définir un message pour l'utilisateur de l'API REST
+                    const message = `Le pokemon ${updatedPokemon.name} dont l'id vaut ${updatedPokemon.id} a été mis à jour avec succès`;
+                    // Retourner la réponse HTTP en json avec le msg et le produit créé
+                    res.json(success(message, updatedPokemon));
+                })
+                .catch((error) => {
+                    const message =
+                        "Le pokemon n'a pas pu être mis à jour. Merci de réessayer dans quelques instants.";
+                res.status(500).json({ message, data: error });
+                });
+        })
+        .catch((error) => {
+            const message =
+                "Le pokemon n'a pas pu être mis à jour. Merci de réessayer dans quelques instants.";
+            res.status(500).json({ message, data: error });
+        });
 });
 
 // Supprimer un pokemon.
