@@ -53,11 +53,25 @@ pokemonsRouter.post("/", (req, res) => {
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
 
-});
+    const productId = req.params.id;
+    Pokemon.update(req.body, { where: { id: productId } })
 
+        .catch((error) => {
+            const message =
+                "Les données n'ont pas pu être récupèrée. Merci de réessayer dans quelques instants.";
+            res.status(403).json({message, data: error});
+    });
+});
 // Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
 
+    Pokemon.findByPk(req.params.id)
+
+        .catch((error) => {
+            const message =
+                "Les données n'ont pas pu être récupèrée. Merci de réessayer dans quelques instants.";
+            res.status(403).json({ message, data: error });
+        });
 });
 
 export { pokemonsRouter };
