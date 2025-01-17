@@ -12,6 +12,9 @@ const PokemonModel = (sequelize, DataTypes) => {
             name: {
                 type: DataTypes.STRING,
                 allowNull: false,
+                unique: {
+                    msg: "Ce nom est déjà pris.",
+                },
             },
             dimensionId: {
                 type: DataTypes.INTEGER,
