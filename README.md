@@ -22,3 +22,10 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+
+## Beaucoup de doutes durant la lecture des consignes, de comment je pourrai faire ceci, est-ce que c'est la logique est vraiment bonne ?
+## A cause du stresse, j'ai même fais l'exercice 6 avant d'y être car je pensais que c'étais demandé dans l'exercice 1 et 2 alors que non.
+## Malgré ça je pense que a s'est plutôt bien passé. Même si l'exercice 7, je ne sais absolument pas comment faire ça.
+## Pour l'exercice 4, j'aurai du révisé un peu plus les règles de validations, je n'ai clairement pas passer assez de temps et cela se remarque dans l'exercice,
+## je n'ai même pas pu faire le C et le D alors que je pense, que dans l'idée, c'est quelque chose de très simple.
+## En bref, globalement je pense que c'est bien aller, même si beaucoup de petites choses ne vont pas.
