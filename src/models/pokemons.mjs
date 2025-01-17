@@ -20,6 +20,12 @@ const PokemonModel = (sequelize, DataTypes) => {
                         args: /^[A-Za-z/éè]*$/,
                         msg: "Seules les lettres et les 'é' + 'è' sont autorisées.",
                     },
+                    notEmpty: {
+                        msg:  "Le nom ne peut pas être vide.",
+                    },
+                    notNull: {
+                        msg: "Le nom est une propriété obligatoire.",
+                    },
                 },
             },
             dimensionId: {
