@@ -37,6 +37,7 @@ pokemonsRouter.get("/:id", (req, res) => {
             }
         })
         .catch(error => {
+            // Afficher lerreur
             const message = "Erreur 500: Le pokemon n'a pas pu être récupéré. Merci de réessayer plus tard.";
             res.status(500).json({ message, data: error });
         });
@@ -44,6 +45,19 @@ pokemonsRouter.get("/:id", (req, res) => {
 
 // Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
+    const data = req.body;
+
+    // Creation d' un pokemon
+    Pokemon.create(data)
+        .then(pokemon => {
+            const message = "Le pokemon a bien été ajouté !";
+            res.json(success(message, pokemon));
+        })
+        .catch(error => {
+            // Afficher lerreur
+            const message = "Erreur 500: Le pokemon n'a pas pu être ajouté. Merci de réessayer plus tard.";
+            res.status(500).json({ message, data: error });
+        });
 });
 
 // Modifier un pokemon.
