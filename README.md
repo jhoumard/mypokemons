@@ -23,4 +23,5 @@ On évite ainsi de publier les informations de connexion sur GIT.
 
 ## Auto-évaluation, difficultés rencontrées
 
-je n'arrivais pas à ajouter le regex demandé
+je n'arrivais pas à ajouter le regex demandé et la route coffee non plus.
+Pour la théorie je me suis tromper de code d'erreur pour la route spéciale.
