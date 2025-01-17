@@ -62,10 +62,14 @@ pokemonsRouter.post("/", (req, res) => {
 
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
+    //Afficher l'erreur
+    return res.status(403).json("403 Forbidden")
 });
 
 // Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
+    //Afficher l'erreur
+    return res.status(403).json("403 Forbidden")
 });
 
 export { pokemonsRouter };
