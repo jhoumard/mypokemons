@@ -22,3 +22,11 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+
+Á la fin du module, je sens que j'ai apris beaucoup de choses et je me sens beacoup plus capable.
+La partie plus dificile du test était pouvoir gerer son temps, dans mon opinion, 90 minutes serait l'ideal pour un un test de ce calibre.
+J'ai trouvé aussi des problemes avec les args dans le models.
+
+Les questions et la documentation apresenté en cours etaient très informatifs.
+
+Les difficultées en general que j'ai eu etaient, plus tõt, au debut du module, quand je n'avais aucune idée des choses que je fesait.

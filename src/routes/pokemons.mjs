@@ -7,7 +7,7 @@ import express from "express";
 import { Pokemon } from "../db/sequelize.mjs";
 
 import { success } from "./helpers.mjs";
-import { pokemons } from "../db/mock-pokemon.mjs";
+import { ValidationError } from "sequelize";
 
 const pokemonsRouter = express();
 
