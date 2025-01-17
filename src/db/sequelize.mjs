@@ -1,3 +1,8 @@
+// Auteur : Anderson Mendes
+// Date : 17 janvier 2025
+// Thème : Les Pokémons 2
+// Language : Javascript
+
 import { Sequelize, DataTypes } from "sequelize";
 import { DB_USER, DB_PASSWORD } from "./env.mjs"
 

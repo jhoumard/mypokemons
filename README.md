@@ -22,3 +22,10 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+## Théorie
+1. Json oublié de mettre 
+## Pratique
+1. serveur ne se lance pas 
+2. code bien écris et structuré selon moi 
+3. commentaire et en-tête mit
+4. variable nommé proprement

@@ -1,3 +1,9 @@
+// Auteur : Anderson Mendes
+// Date : 17 janvier 2025
+// Thème : Les Pokémons 2
+// Language : Javascript
+
+
 import express from "express";
 import { dimensions, getDimension } from "../db/mock-dimension.mjs";
 import { pokemons } from "../db/mock-pokemon.mjs";
@@ -20,10 +26,11 @@ dimensionsRouter.get("/:id", (req, res) => {
 // Obtenir les pokemons d’une dimension en particulier.
 dimensionsRouter.get("/:id/pokemons", (req, res) => {
     const dim_id = req.params.id;
-    const dim = getDimension(dim_id);
+    const dim = getDimension(1 >= dimensionId <= 3);// la référence à la dimension doit être valide
     const dim_pokemons = pokemons.filter(x => x.dimensionId == dim_id);
     const message = `La liste des pokemons à dimension #${dim_id} (${dim.name}) a bien été récupérée!`;
     res.json({ message, data: dim_pokemons });
 });
+
 
 export { dimensionsRouter };

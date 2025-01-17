@@ -1,3 +1,8 @@
+// Auteur : Anderson Mendes
+// Date : 17 janvier 2025
+// Thème : Les Pokémons 2
+// Language : Javascript
+
 import express from "express";
 import { initDb, sequelize } from "./db/sequelize.mjs";
 
@@ -19,13 +24,35 @@ app.get('/', (req, res) => {
   visits++;
   res.send(`Hello, pokemons! (${visits} visites)`);
 });
+// ajouté pour le chemin
+app.get("/api/", (req, res) => {
+  res.redirect(`http://localhost:${port}/`);
+});
 
 import { pokemonsRouter } from "./routes/pokemons.mjs";
 app.use("/api/pokemons", pokemonsRouter);
 
+
 import { dimensionsRouter } from "./routes/dimensions.mjs";
 app.use("/api/dimensions", dimensionsRouter);
+
+
+// Ajouter une route cofffe
+import { CofffeRouter } from "../routes/pokemons.mjs";
+app.use("/api/cofffe", CofffeRouter);
+
+
+app.listen(port, () => {
+  console.log(`Example app listening on port http://localhost:${port}`);
+});
 
 app.listen(port, () =>
   console.log(`Notre application est démarée sur : http://localhost:${port}`)
 );
+
+// Si aucune route ne correspondant à l'URL demandée par le consommateur
+app.use(({ res }) => {
+  const message =
+      "Impossible de trouver la ressource demandée ! Vous pouvez essayer une autre URL.";
+  res.status(404).json(message);
+});
