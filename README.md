@@ -22,3 +22,7 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+
+1) J'ai du commit avec le términal car le commit automatique me demandais de me log (je n'ai pas de connexion)
+
+2) Ma const pokemonId est vu mais jamais déclarer
