@@ -22,3 +22,7 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+
+J'ai encore un peu de mal avec la gestion des erreurs, mais c'est la dernière chose qu'on a vu alors
+ce n'est pas vraiment étonnant. Par contre je n'arrive toujours pas à faire un compteur fonctionnel,
+il faudrait que je regarde avec certains camarade car ce n'est pas vraiment quelque-chose de difficile.

@@ -18,7 +18,7 @@ pokemonsRouter.get("/coffee", (req,res) => {
 // Obtenir la liste des pokemons.
 pokemonsRouter.get("/", (req, res) => {
     let increment = x => { return x + 1};
-    console.log(`Nombre de fois appelé ${increment()}.`);
+    console.log(`${increment()} requêtes de la liste des pokémons`);
     Pokemon.findAll()
     .then(pokemons => {
         const message = "La liste des pokemons a bien été récupérée !";
