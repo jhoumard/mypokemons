@@ -33,7 +33,11 @@ pokemonsRouter.get("/:id", (req, res) => {
 
 // Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
-
+    Pokemon.create(req.body)
+    .then((createdPokemon) => {
+        const message = `Le pokemon donc le nom est ${createdPokemon.name} a bien été créé.`;
+        res.json(success(message, createdPokemon));
+    })
 });
 
 // Modifier un pokemon.
