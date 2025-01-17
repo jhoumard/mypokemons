@@ -34,8 +34,9 @@ pokemonsRouter.get("/:id", (req, res) => {
         .then((pokemon) => {
             if (pokemon === null){
                 const message = `Le pokemon que vous cherchez n'existe pas.`;
-                res.status(404).json({ message });
-            }
+                return res.status(404).json({ message });
+            };
+
             const message = `Le pokemon ${pokemon.name} a bien été recupairé.`;
             res.json(success(message, pokemon));
         })
