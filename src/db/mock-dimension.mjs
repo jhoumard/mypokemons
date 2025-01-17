@@ -1,3 +1,8 @@
+/* Prénom: leticia dépierraz
+    date : 17.01.2025
+ */
+
+
 const dimensions = [
   {
     id: 1,
