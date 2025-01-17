@@ -9,9 +9,11 @@ import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";
 
 const pokemonsRouter = express();
-
+let counteur = 0;
 // Obtenir la liste des pokemons.
 pokemonsRouter.get("/", (req, res) => {
+    counteur++
+    console.log(`${counteur} requete de la liste des pokemons`)
     Pokemon.findAll()
     .then(pokemons => {
         const message = "La liste des pokemons a bien été récupérée !";
