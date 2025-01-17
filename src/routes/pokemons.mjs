@@ -50,12 +50,44 @@ pokemonsRouter.post("/", (req, res) => {
 
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
-
+    const id = req.params.id;
+    Pokemon.update(req.body, {
+        where: { id: id }
+    })
+        .then(([rowsUpdated]) => {
+            if (rowsUpdated === 0) {
+                const message = "Erreur 404: Le pokemon demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
+                return res.status(404).json({ message });
+            }
+            return Pokemon.findByPk(id);
+        })
+        .then(updatedPokemon => {
+            if (updatedPokemon) {
+                const message = `Le pokemon ${updatedPokemon.name} a bien été modifié !`;
+                res.json(success(message, updatedPokemon));
+            }
+        })
 });
 
 // Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
-
+    const id = req.params.id;
+    Pokemon.destroy({
+        where: { id: id }
+    })
+        .then(deleted => {
+            if (deleted) {
+                const message = `Le pokemon avec l'identifiant ${id} a bien été supprimé.`;
+                res.json(success(message));
+            } else {
+                const message = "Erreur 404: Le pokemon demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
+                res.status(404).json({ message });
+            }
+        })
+        .catch(error => {
+            const message = "Erreur 500: Le pokemon n'a pas pu être supprimé. Merci de réessayer plus tard.";
+            res.status(500).json({ message, data: error });
+        });
 });
 
 export { pokemonsRouter };
