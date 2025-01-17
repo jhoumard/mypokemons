@@ -32,7 +32,7 @@ pokemonsRouter.get("/:id", (req, res) => {
             // A noter ici le return pour interrompre l'exécution du code
             return res.status(404).json({ message });
         }
-        const message = `Le Pokemon dont l'id vaut ${product.id} a bien été récupéré.`;
+        const message = `Le Pokemon dont l'id vaut ${Pokemon.id} a bien été récupéré.`;
         res.json(success(message, pokemons));
     })
     .catch((error) => {
@@ -45,7 +45,21 @@ pokemonsRouter.get("/:id", (req, res) => {
 
 // Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
+    Pokemon.create(req.body)
+    .then((createdPokemon) => {
+        // Définir un message pour le consommateur de l'API REST
+        const message = `Le pokemon ${createdPokemon.name} a bien été créé !`;
 
+        // Retourner la réponse HTTP en json avec le msg et le pokemon créé
+        res.json(success(message, createdPokemon));
+    })
+    .catch((error) => {
+        if (error instanceof ValidationError) {
+            return res.status(400).json({ message: error.message, data: error });
+        }
+        const message = "Le pokemon n'a pas pu être ajouté. Merci de réessayer dans quelques instants.";
+        res.status(500).json({ message, data: error });
+    });
 });
 
 // Modifier un pokemon.
