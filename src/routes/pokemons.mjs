@@ -59,12 +59,12 @@ pokemonsRouter.post("/", (req, res) => {
 
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
-
+    res.status(403).json({ message, data: error });
 });
 
 // Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
-
+    res.status(403).json({ message, data: error });
 });
 
 export { pokemonsRouter };
