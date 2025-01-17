@@ -2,7 +2,7 @@
 Author: Amael Jampen
 Date: 17.01.1025
  */
-
+// Ex 4
 
 // https://sequelize.org/docs/v7/models/data-types/
 

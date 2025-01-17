@@ -7,9 +7,14 @@ Date: 17.01.1025
 import express from "express";
 import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";
+import { ValidationError } from "sequelize";
+
+// Ex 5
+let compteur = 0;
 
 const pokemonsRouter = express();
 
+/*
 // Obtenir la liste des pokemons.
 pokemonsRouter.get("/", (req, res) => {
     Pokemon.findAll()
@@ -23,33 +28,51 @@ pokemonsRouter.get("/", (req, res) => {
     });
 });
 
+
+ */
+
+// Ex 1
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
-    const pokemonId = req.params.id;
-    const pokemon = pokemons.find((pokemon) => pokemon.id === pokemonId);
-    const message = `Le pokemon dont l'id vaut ${pokemonId} a bien été récupéré.`;
-    res.json(success(message, pokemon));
+    Pokemon.findByPk(req.params.id)
+        .then((pokemon) => {
+            if (pokemon === null) {
+                const message =
+                    "Le pokemon demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
+// A noter ici le return pour interrompre l'exécution du code
+                return res.status(404).json({ message });
+            }
+            const message = `Le produit dont l'id vaut ${pokemon.id} a bien été récupéré.`;
+            res.json(success(message, pokemon));
+        })
+        .catch((error) => {
+            const message =
+                "Le pokemon n'a pas pu être récupéré. Merci de réessayer dans quelques instants.";
+            res.status(500).json({ message, data: error });
+        });
 });
 
+// Ex 2
 // Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
-// Création d'un nouvel id du pokemon
-
-    const id = getUniqueId(pokemons);
-
-// Création d'un objet avec les nouvelles informations du pokemon
-    const createdPokemon = { ...req.body, ...{ id: id, created: new Date() } };
-
-// Ajout du nouveau pokemon dans le tableau
-    pokemons.push(createdPokemon);
-
+    Pokemon.create(req.body)
+        .then((createdPokemon) => {
 // Définir un message pour le consommateur de l'API REST
-    const message = `Le pokemon ${createdPokemon.name} a bien été créé !`;
-
+            const message = `Le pokemon ${createdPokemon.name} a bien été créé !`;
 // Retourner la réponse HTTP en json avec le msg et le pokemon créé
-    res.json(success(message, createdPokemon));
+            res.json(success(message, createdPokemon));
+        })
+        .catch((error) => {
+            if (error instanceof ValidationError) {
+                return res.status(400).json({ message: error.message, data: error });
+            }
+            const message =
+                "Le pokemon n'a pas pu être ajouté. Merci de réessayer dans quelques instants.";
+            res.status(500).json({ message, data: error });
+        });
 });
 
+// Ex 3
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
 
