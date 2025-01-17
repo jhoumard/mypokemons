@@ -68,4 +68,11 @@ pokemonsRouter.delete("/:id", (req, res) => {
     return res.status(403).json({ message });
 });
 
+// Obtenir I'm a teapot.
+pokemonsRouter.get("/:cofffe", (req, res) => {
+    const message =
+        "418 I'm a teapot.";
+    res.status(418).json({ message });
+});
+
 export { pokemonsRouter };
