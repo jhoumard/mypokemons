@@ -1,6 +1,7 @@
 import express from "express";
 import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";
+import {ValidationError} from "sequelize"
 
 const pokemonsRouter = express();
 
@@ -19,21 +20,41 @@ pokemonsRouter.get("/", (req, res) => {
 
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
-    const id = req.params.id;
-    Pokemon.findByPk(id)
-        .then(pokemon => {
-            const message = `Le pokemon dont l'id vaut ${id} a bien été trouvé.`;
-            res.json(success(message, pokemon));
+    Pokemon.findByPk(req.params.id)
+        .then((pokemons) => {
+            if (pokemons === null) {
+                const message =
+                    "Le produit demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
+// A noter ici le return pour interrompre l'exécution du code
+                return res.status(404).json({ message });
+            }
+            const message = `Le produit dont l'id vaut ${product.id} a bien été récupéré.`;
+            res.json(success(message, product));
         })
-        .catch(error => {
-            const message = `Erreur 404: Le pokemon dont l'id vaut ${id} n'a pas été trouvé.`;
-            res.status(404).json({ message, data: error });
+        .catch((error) => {
+            const message =
+                "Le produit n'a pas pu être récupéré. Merci de réessayer dans quelques instants.";
+            res.status(500).json({ message, data: error });
         });
 });
 
 // Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
-
+    Pokemon.create(req.body)
+        .then((createdPokemons) => {
+// Définir un message pour le consommateur de l'API REST
+            const message = `Le produit ${createdPokemons.name} a bien été créé !`;
+// Retourner la réponse HTTP en json avec le msg et le produit créé
+            res.json(success(message, createdPokemons));
+        })
+        .catch((error) => {
+            if (error instanceof ValidationError) {
+                return res.status(400).json({ message: error.message, data: error });
+            }
+            const message =
+                "Le produit n'a pas pu être ajouté. Merci de réessayer dans quelques instants.";
+            res.status(500).json({ message, data: error });
+        });
 });
 
 // Modifier un pokemon.
