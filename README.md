@@ -22,3 +22,9 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+
+Le test c'est bien passé. J'ai réussie à tout réalisé meme les bonus comme le 418 et le message pour l'exercice 3.
+
+J'ai passé un long moment sur l'exercice 5 car je croyais qu'il fallait mettre le compteur dans le fichier app.mjs. Mais ducoup je l'ai mis dans toutes les routes et maintenant tout marche.
+
+J'ai aussi eu de la peine avec les vailadtion de dimention car j'avais oublié d'ajouter le allowNull: false mais je l'ai mis et tout fonctionne à la pérfection maintenant.
