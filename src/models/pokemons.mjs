@@ -30,6 +30,16 @@ const PokemonModel = (sequelize, DataTypes) => {
             },
             dimensionId: {
                 type: DataTypes.INTEGER,
+                validate: {
+                    min: {
+                        args: [1.0],
+                        msg: "La dimension doit être égale ou superieure à 1.",
+                    },
+                    max: {
+                        args: [3.0],
+                        msg: "La dimension doit être égale ou inferieure à 3.",
+                    },
+                },
             },
         },
         {
