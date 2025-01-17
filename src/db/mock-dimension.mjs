@@ -1,3 +1,8 @@
+/*
+Author: Amael Jampen
+Date: 17.01.1025
+ */
+
 const dimensions = [
   {
     id: 1,

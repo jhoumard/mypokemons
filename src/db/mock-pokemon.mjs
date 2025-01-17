@@ -1,3 +1,8 @@
+/*
+Author: Amael Jampen
+Date: 17.01.1025
+ */
+
 let pokemons = [
   {
     id: 1,

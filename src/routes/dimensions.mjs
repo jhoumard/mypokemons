@@ -1,3 +1,9 @@
+/*
+Author: Amael Jampen
+Date: 17.01.1025
+ */
+
+
 import express from "express";
 import { dimensions, getDimension } from "../db/mock-dimension.mjs";
 import { pokemons } from "../db/mock-pokemon.mjs";

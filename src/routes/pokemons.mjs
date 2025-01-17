@@ -1,3 +1,9 @@
+/*
+Author: Amael Jampen
+Date: 17.01.1025
+ */
+
+
 import express from "express";
 import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";

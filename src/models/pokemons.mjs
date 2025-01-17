@@ -1,3 +1,9 @@
+/*
+Author: Amael Jampen
+Date: 17.01.1025
+ */
+
+
 // https://sequelize.org/docs/v7/models/data-types/
 
 const PokemonModel = (sequelize, DataTypes) => {

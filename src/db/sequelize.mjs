@@ -1,3 +1,9 @@
+/*
+Author: Amael Jampen
+Date: 17.01.1025
+ */
+
+
 import { Sequelize, DataTypes } from "sequelize";
 import { DB_USER, DB_PASSWORD } from "./env.mjs"
 
