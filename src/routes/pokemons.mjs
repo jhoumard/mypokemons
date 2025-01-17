@@ -8,9 +8,12 @@ import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";
 
 const pokemonsRouter = express();
+var compteur = 0;
 
 // Obtenir la liste des pokemons.
 pokemonsRouter.get("/", (req, res) => {
+    compteur++;
+    console.log(`${compteur} requêtes de la liste des pokemons`);
     Pokemon.findAll()
     .then(pokemons => {
         const message = "La liste des pokemons a bien été récupérée !";
@@ -24,6 +27,8 @@ pokemonsRouter.get("/", (req, res) => {
 
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
+    compteur++;
+    console.log(`${compteur} requêtes de la liste des pokemons`);
     Pokemon.findByPk(req.params.id)
         .then((pokemon) => {
             const message = `Le pokemon ${pokemon.name} a bien été recupairé.`;
@@ -33,6 +38,8 @@ pokemonsRouter.get("/:id", (req, res) => {
 
 // Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
+    compteur++;
+    console.log(`${compteur} requêtes de la liste des pokemons`);
     Pokemon.create(req.body)
     .then((createdPokemon) => {
         const message = `Le pokemon donc le nom est ${createdPokemon.name} a bien été créé.`;
@@ -42,12 +49,16 @@ pokemonsRouter.post("/", (req, res) => {
 
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
+    compteur++;
+    console.log(`${compteur} requêtes de la liste des pokemons`);
     const message = "L'accés à la modification de donnée est interdis !"
     res.status(403).json({ message });
 });
 
 // Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
+    compteur++;
+    console.log(`${compteur} requêtes de la liste des pokemons`);
     const message = "L'accés à la suppression de donnée est interdis !"
     res.status(403).json({ message });
 });
