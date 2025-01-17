@@ -8,6 +8,8 @@ const pokemonsRouter = express();
 // Obtenir la liste des pokemons.
 var getPokemonsCount = 0;
 pokemonsRouter.get("/", (req, res) => {
+    // 5. Ajouter un compteur d’appels à la route qui liste tous les pokemons depuis le démarrage de
+    //    l’application. Ce compteur sera affiché dans la console.
     getPokemonsCount++;
     console.log(`${getPokemonsCount} requêtes de la liste des pokemons`);
 
@@ -22,7 +24,7 @@ pokemonsRouter.get("/", (req, res) => {
     });
 });
 
-// Obtenir un pokemon en particulier.
+// 1. Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
     Pokemon.findByPk(req.params.id)
     .then(p => {
@@ -36,7 +38,7 @@ pokemonsRouter.get("/:id", (req, res) => {
     });
 });
 
-// Ajouter un pokemon.
+// 2. Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
     Pokemon.create(req.body)
     .then(createdPokemon => {
@@ -53,13 +55,13 @@ pokemonsRouter.post("/", (req, res) => {
     });
 });
 
-// Modifier un pokemon.
+// 3. Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
     const msg = "Modification refusée";
     res.status(403).json({ msg });
 });
 
-// Supprimer un pokemon.
+// 3. Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
     const msg = "Suppression refusée";
     res.status(403).json({ msg });

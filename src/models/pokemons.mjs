@@ -15,6 +15,7 @@ const PokemonModel = (sequelize, DataTypes) => {
                 unique: {
                     msg: "Ce nom est déjà pris.",
                 },
+                // 4. Validation
                 validate: {
                     is: {
                         args: /^[A-Za-zéè]*$/,
@@ -30,6 +31,7 @@ const PokemonModel = (sequelize, DataTypes) => {
             },
             dimensionId: {
                 type: DataTypes.INTEGER,
+                // 4. Validation
                 allowNull: false,
                 validate: {
                     notEmpty: {
