@@ -20,6 +20,11 @@ app.get('/', (req, res) => {
   res.send(`Hello, pokemons! (${visits} visites)`);
 });
 
+app.get('/cofffe', (req, res) => {
+  const message = "Im a teapot.";
+  res.status(418).json(message);
+});
+
 import { pokemonsRouter } from "./routes/pokemons.mjs";
 app.use("/api/pokemons", pokemonsRouter);
 
