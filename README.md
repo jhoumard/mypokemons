@@ -22,3 +22,6 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+
+
+j'aime bien ce test je le trouve assez complexe et il revoie bien les code erreurs vu en classe juste j'ai eu des probleme avec les commit
