@@ -51,7 +51,21 @@ pokemonsRouter.post("/", (req, res) => {
 
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
-
+    const id = req.params.id;
+    const pokemon = req.body;
+    Pokemon.update(pokemon, { where: { id } })
+        .then(([rowsUpdate]) => {
+            if (rowsUpdate === 0) {
+                const message = `Le pokemon ${id} n'existe pas.`;
+                return res.status(404).json({ message });
+            }
+            const message = `Le pokemon ${id} a bien été modifié.`;
+            res.json(success(message, pokemon));
+        })
+        .catch(error => {
+            const message = `Le pokemon ${id} n'a pas pu être modifié. Vérifiez le serveur.`;
+            res.status(500).json({ message, data: error });
+        });
 });
 
 // Supprimer un pokemon.
