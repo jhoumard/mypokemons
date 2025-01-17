@@ -21,6 +21,7 @@ var visits = 0;
 app.get('/', (req, res) => {
   visits++;
   res.send(`Hello, pokemons! (${visits} visites)`);
+
 });
 
 import { pokemonsRouter } from "./routes/pokemons.mjs";

@@ -22,3 +22,5 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+
+je n'arrivais pas à ajouter le regex demandé

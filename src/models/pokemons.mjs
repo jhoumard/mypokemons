@@ -34,6 +34,16 @@ const PokemonModel = (sequelize, DataTypes) => {
                 },
                 notNull: {
                     msg: "La dimmension est obligatoire"
+                },
+                validate:{
+                    min:{
+                        args:"1",
+                        msg:" La dimension min commence par 1"
+                    },
+                    max:{
+                        args:"3",
+                        msg:"La dimension max s'arrête à 3"
+                    }
                 }
             },
         },

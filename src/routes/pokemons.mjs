@@ -90,4 +90,19 @@ pokemonsRouter.delete("/:id", (req, res) => {
         });
 });
 
+// Bonus route/cofffe qui retourne erreur 418 : I'm teapot
+pokemonsRouter.get("/", (req, res) => {
+    Pokemon.findAll()
+        .then(pokemons => {
+            const message = "La liste des pokemons a bien été récupérée !";
+            res.json(success(message, pokemons));
+        })
+        .catch(error => {
+            const message = "Erreur 418: I'm teapot";
+            res.status(500).json({ message, data: error });
+        });
+});
+
+
+
 export { pokemonsRouter };
