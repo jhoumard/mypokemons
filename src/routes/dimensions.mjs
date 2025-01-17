@@ -1,3 +1,7 @@
+//Nom : Alonzo Pinto
+//date : 17.01.2025
+//Version : 1
+
 import express from "express";
 import { dimensions, getDimension } from "../db/mock-dimension.mjs";
 import { pokemons } from "../db/mock-pokemon.mjs";
