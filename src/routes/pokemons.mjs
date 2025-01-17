@@ -1,4 +1,5 @@
 import express from "express";
+import { ValidationError } from "sequelize";
 import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";
 

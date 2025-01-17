@@ -12,6 +12,21 @@ const PokemonModel = (sequelize, DataTypes) => {
             name: {
                 type: DataTypes.STRING,
                 allowNull: false,
+                unique: {
+                    msg: "Ce nom est déjà pris.",
+                },
+                validate: {
+                    is: {
+                        args: /^[A-Za-zéè]*$/,
+                        msg: "Seules les lettres (‘é’ ou ‘è‘ inclus) sont autorisées."
+                    },
+                    notEmpty: {
+                        msg: "Le nom ne peut pas être vide."
+                    },
+                    notNull: {
+                        msg: "Le nom est une propriété obligatoire."
+                    },
+                }
             },
             dimensionId: {
                 type: DataTypes.INTEGER,
