@@ -27,7 +27,12 @@ pokemonsRouter.get("/:id", (req, res) => {
 
 // Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
-
+    Pokemon.create(req.body).then((createdPokemon) => {
+// Définir un message pour le consommateur de l'API REST
+        const message = `Le produit ${createdPokemon.name} a bien été créé !`;
+// Retourner la réponse HTTP en json avec le msg et le produit créé
+        res.json(success(message, createdPokemon));
+    });
 });
 
 // Modifier un pokemon.
