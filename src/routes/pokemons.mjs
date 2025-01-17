@@ -42,7 +42,7 @@ pokemonsRouter.get("/:id", (req, res) => {
 
 // Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
-    pokemons.create(req.body)
+    pokemon.create(req.body)
         .then((createdpokemon) => {
 // Définir un message pour le consommateur de l'API REST
             const message = `Le pokemons ${createdpokemon.name} a bien été créé !`;
@@ -61,12 +61,49 @@ pokemonsRouter.post("/", (req, res) => {
 
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
-
+    const pokemonid = req.params.id;
+    pokemon.update(req.body, { where: { id: pokemonid } })
+        .then((_) => {
+            return pokemon.findByPk(pokemonid).then((updatedpokemon) => {
+                if (updatedpokemon === null) {
+                    const message =
+                        "Le pokemon demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
+                    // A noter ici le return pour interrompre l'exécution du code
+                    return res.status(404).json({ message });
+                }
+                // Définir un message pour l'utilisateur de l'API REST
+                const message = `Le pokemon ${updatedProduct.name} dont l'id vaut ${updatedProduct.id} a été mis à jour avec succès !`
+                // Retourner la réponse HTTP en json avec le msg et le pokemon créé
+                res.json(success(message, updatedpokemon));
+            });
+        })
+        .catch((error) => {const message = "Le pokemon n'a pas pu être mis à jour. Merci de réessayer dans quelques instants.";
+            res.status(500).json({ message, data: error });
+        });
 });
 
 // Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
-
+    pokemon.findByPk(req.params.id)
+        .then((deletedpokemon) => {
+            if (deletedpokemon === null) {
+                const message =
+                    "Le pokemon demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
+                // A noter ici le return pour interrompre l'exécution du code
+                return res.status(404).json({ message });
+            }
+            return pokemon.destroy({
+                where: { id: deletedpokemon.id -1 },
+            }).then((_) => {
+                // Définir un message pour le consommateur de l'API REST
+                const message = `Le pokemon ${deletedpokemon.name} a bien été supprimé !`;
+                // Retourner la réponse HTTP en json avec le msg et le pokemon créé
+                res.json(success(message, deletedpokemon));
+            });
+        })
+        .catch((error) => {const message = "Le pokemon n'a pas pu être supprimé. Merci de réessayer dans quelques instants.";
+            res.status(500).json({ message, data: error });
+        });
 });
 
 export { pokemonsRouter };
