@@ -32,11 +32,19 @@ const PokemonModel = (sequelize, DataTypes) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 validate: {
+                    min: {
+                        args: [1],
+                        msg: "L'id de la dimension doit être suprérieur à 1.",
+                    },
+                    max: {
+                        args: [3],
+                        msg: "L'id de la dimension doit être inferieur à 3.",
+                    },
                     notEmpty: {
-                        msg: "La dimension ne peut pas être vide.",
+                        msg: "L'id de la dimension ne peut pas être vide.",
                     },
                     notNull: {
-                        msg: "Le dimension est une propriété obligatoire.",
+                        msg: "L'id de la dimension est une propriété obligatoire.",
                     },
                 },
             },
