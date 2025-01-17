@@ -19,7 +19,16 @@ pokemonsRouter.get("/", (req, res) => {
 
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
-
+    const id = req.params.id;
+    Pokemon.findByPk(id)
+        .then(pokemon => {
+            const message = `Le pokemon dont l'id vaut ${id} a bien été trouvé.`;
+            res.json(success(message, pokemon));
+        })
+        .catch(error => {
+            const message = `Erreur 404: Le pokemon dont l'id vaut ${id} n'a pas été trouvé.`;
+            res.status(404).json({ message, data: error });
+        });
 });
 
 // Ajouter un pokemon.
