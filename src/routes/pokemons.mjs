@@ -4,6 +4,7 @@
 import express from "express";
 import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";
+import { ValidationError } from "sequelize"
 
 const pokemonsRouter = express();
 // compteur des requêtes
@@ -35,6 +36,10 @@ pokemonsRouter.get("/:id", (req, res) => {
         const message = `Le pokemon dont l'id vaut ${pokemon.id} a bien été récupéré.`;
         res.json(success(message, pokemon));
     })
+    .catch((error) => {
+        const message = "Le pokemon n'a pas pu être récupéré. Merci de réessayer dans quelques instants.";
+        res.status(500).json({ message, data: error });
+    });
 });
 
 // Ajouter un pokemon.
@@ -44,6 +49,11 @@ pokemonsRouter.post("/", (req, res) => {
         const message = `Le pokemon ${createdPokemon.name} a bien été créé !`;
         res.json(success(message, createdPokemon));
     })
+    .catch((error) => {
+        if (error instanceof ValidationError) {
+        return res.status(400).json({ message: error.message, data: error });
+        }        
+    });
 });
 
 
