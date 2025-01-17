@@ -17,15 +17,28 @@ const PokemonModel = (sequelize, DataTypes) => {
                 },
                 validate: {
                     is: {
-                        // contraint de charactére sont dans les []. A-Z veut dire de A majuscule à Z majuscule. a-z veut dire la meme chose mais minuscule
-                        // \s veut dire autorisé les espaces
                         args: /^[A-Za-z\séè]*$/,
                         msg: "Seules les lettres et les espaces sont autorisées.",
                     },
-                }
+                    notEmpty: {
+                        msg: "Le nom ne peut pas être vide.",
+                    },
+                    notNull: {
+                        msg: "Le nom est une propriété obligatoire.",
+                    },
+                },
             },
             dimensionId: {
                 type: DataTypes.INTEGER,
+                allowNull: false,
+                validate: {
+                    notEmpty: {
+                        msg: "La dimension ne peut pas être vide.",
+                    },
+                    notNull: {
+                        msg: "Le dimension est une propriété obligatoire.",
+                    },
+                },
             },
         },
         {
