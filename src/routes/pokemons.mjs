@@ -20,8 +20,18 @@ pokemonsRouter.get("/", (req, res) => {
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
     Pokemon.findByPk(req.params.id).then((pokemon) => {
+        if (pokemon === null) {
+            const message =
+                "Le pokemon demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
+            return res.status(404).json({message});
+        }
         const message = `Le pokemon dont l'id vaut ${pokemon.id} a bien été récupéré.`;
         res.json(success(message, pokemon));
+    })
+    .catch((error) => {
+        const message =
+            "Le pokemon n'a pas pu être récupéré. Merci de réessayer dans quelques instants.";
+        res.status(500).json({message, data: error});
     });
 });
 
@@ -30,7 +40,7 @@ pokemonsRouter.post("/", (req, res) => {
     Pokemon.create(req.body).then((createdPokemon) => {
 // Définir un message pour le consommateur de l'API REST
         const message = `Le produit ${createdPokemon.name} a bien été créé !`;
-// Retourner la réponse HTTP en json avec le msg et le produit créé
+// Retourner la réponse HTTP en json avec le msg et le pokemon créé
         res.json(success(message, createdPokemon));
     });
 });
@@ -38,7 +48,7 @@ pokemonsRouter.post("/", (req, res) => {
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
     const message =
-    "Vous ne pouvez pas modifier un pokemon.";
+        "Vous ne pouvez pas modifier un pokemon.";
     return res.status(403).json({ message });
 
 });
