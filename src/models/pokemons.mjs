@@ -15,12 +15,6 @@ const PokemonModel = (sequelize, DataTypes) => {
             name: {
                 type: DataTypes.STRING,
                 allowNull: false,
-                validate: {
-                    is: {
-                        args: /^[A-Za-z\s]*$/,
-                        msg: "Seules les lettres",
-                    }
-                },
                 unique:{
                     msg:"Ce nom est déjà pris"
                 },
