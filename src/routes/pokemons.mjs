@@ -19,7 +19,10 @@ pokemonsRouter.get("/", (req, res) => {
 
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
-
+    Pokemon.findByPk(req.params.id).then((pokemon) => {
+        const message = `Le pokemon dont l'id vaut ${pokemon.id} a bien été récupéré.`;
+        res.json(success(message, pokemon));
+    });
 });
 
 // Ajouter un pokemon.
