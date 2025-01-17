@@ -126,8 +126,6 @@ pokemonsRouter.delete("/:id", (req, res) => {
         pokemon: deletedPokemon[0], // Retourne les informations du Pokémon supprimé
     });
 });
-pokemonsRouter.get("/coffe", (req, res) => {
 
-});
 
 export { pokemonsRouter };

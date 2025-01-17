@@ -29,4 +29,4 @@ j'ai eu quelque petit bug mais j'ai réussi à débugger et je trouve que j'ai m
 // app.get('/api/pokemons/', (req, res) => {
 //   visiters++;
 //   res.send(`Hello, pokemons! (${visiters} visites)`);
-// }); ca ne me donne pas tout les pokemons si je le mets voila un problème que j'ai eu 
+// }); ca ne me donne pas tout les pokemons si je le mets voila un problème que j'ai eu et j'ai des problemes avec le post
