@@ -1,3 +1,8 @@
+/*
+NOM : Léo del Duca
+DATE : 17.01.2025
+*/
+
 let pokemons = [
   {
     id: 1,

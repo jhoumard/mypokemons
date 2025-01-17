@@ -1,3 +1,8 @@
+/*
+NOM : Léo del Duca
+DATE : 17.01.2025
+*/
+
 import express from "express";
 import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";
@@ -19,8 +24,24 @@ pokemonsRouter.get("/", (req, res) => {
 
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
-
+    Pokemon.findByPk(req.params.id)
+    .then((pokemons) => {
+        if (pokemons === null) {
+            const message =
+                "Le Pokemon demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
+            // A noter ici le return pour interrompre l'exécution du code
+            return res.status(404).json({ message });
+        }
+        const message = `Le Pokemon dont l'id vaut ${product.id} a bien été récupéré.`;
+        res.json(success(message, pokemons));
+    })
+    .catch((error) => {
+        const message =
+            "Le Pokemon n'a pas pu être récupéré. Merci de réessayer dans quelques instants.";
+        res.status(500).json({ message, data: error });
+    });
 });
+
 
 // Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
