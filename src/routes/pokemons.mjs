@@ -45,7 +45,20 @@ pokemonsRouter.get("/:id", (req, res) => {
 
 // Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
+    Pokemon.create(req.body)
+    .then((createdPokemon) => {
+        const message = `Le Pokemon ${createdPokemon.name} a bien été créé !`;
 
+        res.json(success(message, createdPokemon));
+    })
+    .catch((error) =>{
+        if (error instanceof ValidationError) {
+            return res.status(400).json({ message: error.message, data: error });
+        }
+        const message =
+        "Le Pokemon n'a pas pu être ajouté. Merci de réessayer dans quelques instants.";
+        res.status(500).json({ message, data: error });
+    });
 });
 
 // Modifier un pokemon.
