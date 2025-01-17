@@ -37,7 +37,7 @@ pokemonsRouter.get("/:id", (req, res) => {
             const message = "Erreur 404: Le pokémon demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
             return res.status(404).json({ message });
         }
-        const message = `Le pokémon dont l'id vaut ${pokemon.id} a bien été récupérer.`;
+        const message = `Le pokémon dont l'id vaut ${pokemon.id} a bien été récupéré.`;
         res.json(success(message, pokemon));
     })
         // permet d'attraper l'erreur pour l'empécher de bloquer le programme
