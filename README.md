@@ -22,3 +22,9 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+
+Dans l'ensemble, j'ai plutôt réalisé le test sans trop de difficultés, cependant j'ai recontré certains problèmes qui sont les suivants:
+
+- Erreurs au niveau des règles de validation
+
+- Problèmes lors de la réalisation des gestions d'erreurs dans les routes

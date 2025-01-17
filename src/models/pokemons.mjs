@@ -37,6 +37,7 @@ const PokemonModel = (sequelize, DataTypes) => {
             },
             dimensionId: {
                 type: DataTypes.INTEGER,
+                allowNull: false,
                 validate: {
 
                     notEmpty: {

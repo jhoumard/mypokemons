@@ -14,12 +14,17 @@ let compteur = 0;
 
 const pokemonsRouter = express();
 
-/*
+
 // Obtenir la liste des pokemons.
 pokemonsRouter.get("/", (req, res) => {
     Pokemon.findAll()
     .then(pokemons => {
         const message = "La liste des pokemons a bien été récupérée !";
+
+        // Ex 5
+        compteur += 1;
+        console.log(compteur + "requêtes de la liste des pokemons")
+
         res.json(success(message, pokemons));
     })
     .catch(error => {
@@ -29,7 +34,7 @@ pokemonsRouter.get("/", (req, res) => {
 });
 
 
- */
+
 
 // Ex 1
 // Obtenir un pokemon en particulier.
