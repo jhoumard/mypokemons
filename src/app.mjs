@@ -1,3 +1,6 @@
+//Matviy Lyubivyy 
+//17.01.25
+
 import express from "express";
 import { initDb, sequelize } from "./db/sequelize.mjs";
 

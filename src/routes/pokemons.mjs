@@ -6,13 +6,17 @@ import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";
 
 const pokemonsRouter = express();
+// compteur des requêtes
+var requests = 0;
 
-// Obtenir la liste des pokemons.
+// Obtenir la liste des pokemons et envoi messages avec nombre de requêtes dans la console
 pokemonsRouter.get("/", (req, res) => {
+    requests++,
     Pokemon.findAll()
     .then(pokemons => {
         const message = "La liste des pokemons a bien été récupérée !";
         res.json(success(message, pokemons));
+        console.log(`${requests} requêtes de la liste des pokemons`);
     })
     .catch(error => {
         const message = "Erreur 500: La liste des pokemons n'a pas pu être récupérée. Merci de réessayer plus tard.";
