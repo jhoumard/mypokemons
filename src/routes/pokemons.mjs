@@ -25,12 +25,29 @@ pokemonsRouter.get("/", (req, res) => {
 
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
-
+    const pokemonId = req.params.id;
+    const pokemon = pokemons.find((pokemon) => pokemon.id === pokemonId);
+    const message = `Le pokemon dont l'id vaut ${pokemonId} a bien été récupéré.`;
+    res.json(success(message, pokemon));
 });
 
 // Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
+// Création d'un nouvel id du pokemon
 
+    const id = getUniqueId(pokemons);
+
+// Création d'un objet avec les nouvelles informations du pokemon
+    const createdPokemon = { ...req.body, ...{ id: id, created: new Date() } };
+
+// Ajout du nouveau pokemon dans le tableau
+    pokemons.push(createdPokemon);
+
+// Définir un message pour le consommateur de l'API REST
+    const message = `Le pokemon ${createdPokemon.name} a bien été créé !`;
+
+// Retourner la réponse HTTP en json avec le msg et le pokemon créé
+    res.json(success(message, createdPokemon));
 });
 
 // Modifier un pokemon.
