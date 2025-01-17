@@ -22,13 +22,27 @@ const PokemonModel = (sequelize, DataTypes) => {
                 },
                 validate: {
                     is: {
-                        args: /^[A-Za-zéè\s]*$/,
-                        msg:"seuls les lettres (é et è inclus) et les espaces sont autorisés"
+                        args: /^[A-Za-zéè]*$/,
+                        msg:"seuls les lettres (é et è inclus)"
+                    },
+                    notEmpty: {
+                        msg: "le nom du pokemon ne peut pas être vide"
+                    },
+                    notNull: {
+                        msg: "le nom du pokemon ne peut pas être nul"
                     },
                 }
             },
             dimensionId: {
                 type: DataTypes.INTEGER,
+                validate: {
+                    notEmpty: {
+                        msg: "la dimonsion ne peut pas être vide"
+                    },
+                    notNull: {
+                        msg: "la dimonsion ne peut pas être nul"
+                    },
+                }
             },
         },
         {
