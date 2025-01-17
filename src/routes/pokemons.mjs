@@ -1,6 +1,13 @@
+/*
+Author : Jérémie Chevalley
+Date : 17.01.2025
+Description : Router of Pokemones for pokemon API
+*/
+
 import express from "express";
 import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";
+import { ValidationError } from "sequelize";
 
 const pokemonsRouter = express();
 
@@ -19,7 +26,20 @@ pokemonsRouter.get("/", (req, res) => {
 
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
-
+    Pokemon.findByPk(req.params.id)
+    .then((pokemon) => {
+        if (pokemon === null) {
+            const message = "Le pokemon demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
+            // A noter ici le return pour interrompre l'exécution du code
+            return res.status(404).json({ message });
+        }
+        const message = `Le pokemon dont l'id vaut ${pokemon.id} a bien été récupéré.`;
+        res.json(success(message, pokemon));
+    })
+    .catch((error) => {
+        const message = "Le pokemon n'a pas pu être récupéré. Merci de réessayer dans quelques instants.";
+        res.status(500).json({ message, data: error });
+    });
 });
 
 // Ajouter un pokemon.
