@@ -48,7 +48,8 @@ pokemonsRouter.put("/:id", (req, res) => {
 
 // Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
-
+    const message = "L'accés à la suppression de donnée est interdis !"
+    res.status(403).json({ message });
 });
 
 export { pokemonsRouter };
