@@ -26,6 +26,10 @@ app.use("/api/pokemons", pokemonsRouter);
 import { dimensionsRouter } from "./routes/dimensions.mjs";
 app.use("/api/dimensions", dimensionsRouter);
 
+app.get("/api/cofffe", (req, res) => {
+  res.status(418).json({ message: "I'm a teapot." });
+})
+
 app.listen(port, () =>
   console.log(`Notre application est démarée sur : http://localhost:${port}`)
 );
