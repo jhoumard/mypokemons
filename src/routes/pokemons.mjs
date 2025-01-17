@@ -11,6 +11,8 @@ const pokemonsRouter = express();
 
 // Obtenir la liste des pokemons.
 pokemonsRouter.get("/", (req, res) => {
+    let increment = x => { return x + 1};
+    console.log(`Nombre de fois appelé ${increment()}.`);
     Pokemon.findAll()
     .then(pokemons => {
         const message = "La liste des pokemons a bien été récupérée !";
