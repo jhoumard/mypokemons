@@ -1,3 +1,7 @@
+// Dernier auteur : Adrien Volery
+// Date de la dernière modification : 17.01.2025
+// Projet : Evaluation Module ICT295 - API REST
+
 import express from "express";
 import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";

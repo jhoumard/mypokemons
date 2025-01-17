@@ -1,3 +1,8 @@
+// Dernier auteur : Adrien Volery
+// Date de la dernière modification : 17.01.2025
+// Projet : Evaluation Module ICT295 - API REST
+
+
 import express from "express";
 import { initDb, sequelize } from "./db/sequelize.mjs";
 
@@ -18,6 +23,7 @@ var visits = 0;
 app.get('/', (req, res) => {
   visits++;
   res.send(`Hello, pokemons! (${visits} visites)`);
+  console.log("visits : "+visits)
 });
 
 import { pokemonsRouter } from "./routes/pokemons.mjs";
