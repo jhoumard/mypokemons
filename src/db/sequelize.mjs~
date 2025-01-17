@@ -21,7 +21,7 @@ const sequelize = new Sequelize(
 
 import { pokemons } from "./mock-pokemon.mjs";
 import { PokemonModel } from "../models/pokemons.mjs";
-import {DimensionModel} from "dimensionsModel.mjs";
+import {DimensionModel} from "../models/dimensionsModel.mjs";
 import {dimensions} from "./mock-dimension.mjs";
 
 // Le modèle pokemon
@@ -34,17 +34,6 @@ let initDb = () => {
             console.log("La base de données a bien été synchronisée");
         });
 };
-
-const importDimensions = () => {
-    // import toutes les dimensions à partir du fichier db/mock-dimension
-    dimensions.map(d => {
-        Dimension.create({
-            name: d.name,
-        }).then(d => console.log(d.toJSON()));
-    });
-};
-
-
 const importPokemons = () => {
     // import tous les pokemons présents dans le fichier db/mock-pokemon
     pokemons.map(p => {

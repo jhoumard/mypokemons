@@ -17,7 +17,7 @@ const dimensions = [
 ];
 
 const getDimension = (id) => {
-  return dimensions.find(x => x.id == id);
+  return dimensions.find(x => x.id === id);
 };
 
 export { dimensions, getDimension };

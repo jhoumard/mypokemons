@@ -3,18 +3,16 @@
 //Version : 1
 
 
-
-
 import express from "express";
 import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";
+import {pokemons} from "../db/mock-pokemon.mjs";
 
 const pokemonsRouter = express();
 
 // Obtenir la liste des pokemons.
 pokemonsRouter.get("/", (req, res) => {
-    Pokemon.findAll()
-        .then(pokemons => {
+    Pokemon.findAll().then(pokemons => {
             const message = "La liste des pokemons a bien été récupérée !";
             res.json(success(message, pokemons));
         })
@@ -26,25 +24,30 @@ pokemonsRouter.get("/", (req, res) => {
 
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
-    const id = req.params.id;
-    Pokemon.findByPk(id)
-        .then(pokemon => {
-            const message = `Le pokemon dont l'id vaut ${pokemon.id} a bien été trouvé.`;
-            res.json(success(message, pokemon));
-        })
-        .catch(error => {
-            const message = `Erreur 404: Le pokemon dont l'id vaut ${id} n'a pas été trouvé.`;
-            res.status(404).json({ message, data: error });
+    Pokemon.findByPk(req.params.id)
+        .then((pokemons) => {
+        if (pokemons === null) {
+            const message =
+                "Le pokemons demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
+// A noter ici le return pour interrompre l'exécution du code
+            return res.status(404).json({ message });
+        }
+        const message = `Le pokemons dont l'id vaut ${pokemons.id} a bien été récupéré.`;
+        res.json(success(message, pokemons));
+    })
+        .catch((error) => {
+            const message =
+                "Le pokemon n'a pas pu être récupéré. Merci de réessayer dans quelques instants.";
+            res.status(500).json({ message, data: error });
         });
 });
 
 // Ajouter un pokemon.
 pokemonsRouter.put("/", (req, res) => {
     const pokemon = req.body;
-    Pokemon.create(pokemon)
-        .then(pokemon => {
+    Pokemon.create(pokemon).then(pokemons => {
             const message = "Le pokemon a bien été ajouté.";
-            res.json(success(message, pokemon));
+            res.json(success(message, pokemons));
         })
         .catch(error => {
             const message = "Erreur 500: Le pokemon n'a pas pu'être ajouté. Merci de réessayer plus tard.";
@@ -122,6 +125,9 @@ pokemonsRouter.delete("/:id", (req, res) => {
         message: "Pokémon supprimé avec succès !",
         pokemon: deletedPokemon[0], // Retourne les informations du Pokémon supprimé
     });
+});
+pokemonsRouter.get("/coffe", (req, res) => {
+
 });
 
 export { pokemonsRouter };

@@ -22,3 +22,11 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+j'ai eu quelque petit bug mais j'ai réussi à débugger et je trouve que j'ai mieux réussi que la derniere fois le test était un peu plus facile merci a vous monsieur et bonne continuation
+
+// Compteur d’appels à la route «home» de l’application (http://localhost:3000/api/pokemons/) depuis le démarrage de celle-ci.
+// var visiters = 0;
+// app.get('/api/pokemons/', (req, res) => {
+//   visiters++;
+//   res.send(`Hello, pokemons! (${visiters} visites)`);
+// }); ca ne me donne pas tout les pokemons si je le mets voila un problème que j'ai eu 

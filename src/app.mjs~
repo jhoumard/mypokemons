@@ -20,12 +20,12 @@ app.get('/', (req, res) => {
   res.send(`Hello, pokemons! (${visits} visites)`);
 });
 
-// // Compteur d’appels à la route «home» de l’application (http://localhost:3000/api/pokemons/) depuis le démarrage de celle-ci.
-// var visiters = 0;
-// app.get('/api/pokemons/', (req, res) => {
-//   visiters++;
-//   res.send(`Hello, pokemons! (${visiters} visites)`);
-// }); ca ne me donne pas tout les pokemons si je le mets
+// Compteur d’appels à la route «home» de l’application (http://localhost:3000/api/pokemons/) depuis le démarrage de celle-ci.
+var visiters = 0;
+app.get('/api/pokemons/', (req, res) => {
+  visiters++;
+  res.send(`Hello, pokemons! (${visiters} visites)`);
+});
 
 import { pokemonsRouter } from "./routes/pokemons.mjs";
 app.use("/api/pokemons", pokemonsRouter);
