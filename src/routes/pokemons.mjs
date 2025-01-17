@@ -1,3 +1,8 @@
+/**
+ * Auteur: Hugo Rod
+ * Date: 17.01.2025
+ */
+
 import express from "express";
 import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";
@@ -19,7 +24,11 @@ pokemonsRouter.get("/", (req, res) => {
 
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
-
+    Pokemon.findByPk(req.params.id)
+        .then((pokemon) => {
+            const message = `Le pokemon ${pokemon.name} a bien été recupairé.`;
+            res.json(success(message, pokemon));
+        })
 });
 
 // Ajouter un pokemon.
