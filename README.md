@@ -22,3 +22,5 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+
+2eme test a passé plus facile pour moi grâce a temps quel j'ai. J'ai reussi presque dans tout les exercices sauf bonus. J'ai ajouté les erreurs des base comme 500 et 404 dans get et post et comme etait mis dans ex 3 j'ai ajouté 403 pour delete et put. Au debut je ne comprenait pas pourqoi mon serveur local tombe quand il y a un erreur dans validation, c'etait parce que j'ai oublie ajouter "ValidationError" dans post. Alors cette fois j'ai pas oublie de mettre entête dans tout les fichier modifié. 
