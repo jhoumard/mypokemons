@@ -22,3 +22,13 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+
+
+
+Théorie:
+
+Il c'est mieux passer que le premier a mos avis, j'ai suivis toutes les doc chez moi pour réviser et sa m'a aider.
+
+Pratique:
+
+Il c'est un peu mieux passer que le premier aussi mais je n'ai pas pu  controler tous mon codes car je preferais faire tous les exercices cart je suis une personnes lente et qui se fige sur un promblème qui vas pas, j'ai mis en avant d'abord les exercices. De même pour les commit je n'ai pas fait les 9 commit car j'ai eu un problème au début(erreur réseau) et j'ai commit une fois tous les exercices terminer. j'ai rencontrer des problème sur l'erreur 403 et je n'ai pas fait l'exercice 5 (manque de temps).

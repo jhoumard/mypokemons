@@ -1,5 +1,7 @@
 import { Sequelize, DataTypes } from "sequelize";
 import { DB_USER, DB_PASSWORD } from "./env.mjs"
+import { pokemons } from "./mock-pokemon.mjs";
+import { PokemonModel } from "../models/pokemons.mjs";
 
 const sequelize = new Sequelize(
     "db_pokemons",  // Nom de la DB qui doit exister
@@ -13,8 +15,7 @@ const sequelize = new Sequelize(
     }
 );
 
-import { pokemons } from "./mock-pokemon.mjs";
-import { PokemonModel } from "../models/pokemons.mjs";
+
 
 // Le modèle pokemon
 const Pokemon = PokemonModel(sequelize, DataTypes);

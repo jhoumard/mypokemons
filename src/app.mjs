@@ -1,3 +1,10 @@
+/*
+Auteur: Simon Awelachew
+Date: 17.01.2025
+Version: Test_02 Pokemons
+*/
+
+
 import express from "express";
 import { initDb, sequelize } from "./db/sequelize.mjs";
 
@@ -29,3 +36,11 @@ app.use("/api/dimensions", dimensionsRouter);
 app.listen(port, () =>
   console.log(`Notre application est démarée sur : http://localhost:${port}`)
 );
+
+
+app.use(({ res }) => {
+  const message =
+  "Impossible de trouver la ressource demandée !";
+  res.status(403).json(message);
+  });
+  
