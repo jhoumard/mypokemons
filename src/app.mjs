@@ -29,3 +29,8 @@ app.use("/api/dimensions", dimensionsRouter);
 app.listen(port, () =>
   console.log(`Notre application est démarée sur : http://localhost:${port}`)
 );
+app.use(({ res }) => {
+  const message =
+      "Impossible de trouver la ressource demandée ! Vous pouvez essayer une autre URL.";
+  res.status(404).json(message);
+});
