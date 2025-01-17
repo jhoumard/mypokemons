@@ -37,12 +37,17 @@ pokemonsRouter.post("/", (req, res) => {
 
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
+    const message =
+    "Vous ne pouvez pas modifier un pokemon.";
+    return res.status(403).json({ message });
 
 });
 
 // Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
-
+    const message =
+        "Vous ne pouvez pas effacer des pokemons.";
+    return res.status(403).json({ message });
 });
 
 export { pokemonsRouter };
