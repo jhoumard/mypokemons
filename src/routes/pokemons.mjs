@@ -58,7 +58,7 @@ pokemonsRouter.post("/", (req, res) => {
     .catch(error => {
         if (error instanceof ValidationError) {
             return res.status(400).json({ message: error.message, data: error });
-        }
+        };
 
         const message = "Erreur 500: Le pokemon n'a pas pu être créer. Merci de réessayer plus tard.";
         res.status(500).json({ message, data: error });

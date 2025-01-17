@@ -1,3 +1,7 @@
+/**
+ * Auteur: Hugo Rod
+ * Date: 17.01.2025
+ */
 // https://sequelize.org/docs/v7/models/data-types/
 
 const PokemonModel = (sequelize, DataTypes) => {
@@ -18,7 +22,7 @@ const PokemonModel = (sequelize, DataTypes) => {
                 validate: {
                     is: {
                         args: /^[A-Za-z\séè]*$/,
-                        msg: "Seules les lettres et les espaces sont autorisées.",
+                        msg: "Seules les lettres, les espaces et é et è sont autorisées.",
                     },
                     notEmpty: {
                         msg: "Le nom ne peut pas être vide.",

@@ -1,3 +1,8 @@
+/**
+ * Auteur: Hugo Rod
+ * Date: 17.01.2025
+ */
+
 import express from "express";
 import { initDb, sequelize } from "./db/sequelize.mjs";
 
@@ -26,6 +31,7 @@ app.use("/api/pokemons", pokemonsRouter);
 import { dimensionsRouter } from "./routes/dimensions.mjs";
 app.use("/api/dimensions", dimensionsRouter);
 
+// La route cofffe qui retourne le code 418
 app.get("/api/cofffe", (req, res) => {
   res.status(418).json({ message: "I'm a teapot." });
 })
@@ -34,6 +40,7 @@ app.listen(port, () =>
   console.log(`Notre application est démarée sur : http://localhost:${port}`)
 );
 
+// L'erreur si la requette http est fausse
 app.use(({ res }) => {
   const message = "Impossible de trouver la ressource demandée ! Vous pouvez essayer une autre URL.";
   res.status(404).json(message);
