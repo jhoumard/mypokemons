@@ -31,6 +31,13 @@ app.use("/api/pokemons", pokemonsRouter);
 import { dimensionsRouter } from "./routes/dimensions.mjs";
 app.use("/api/dimensions", dimensionsRouter);
 
+// Si aucune route ne correspondant à l'URL demandée par le consommateur
+app.use(({ res }) => {
+  const message =
+      "Impossible de trouver la ressource demandée ! Vous pouvez essayer une autre URL.";
+  res.status(404).json(message);
+});
+
 app.listen(port, () =>
   console.log(`Notre application est démarée sur : http://localhost:${port}`)
 );
