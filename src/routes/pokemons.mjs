@@ -1,3 +1,7 @@
+// Anthony Viagniaux
+// Date 17.01.25
+
+
 import express from "express";
 import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";
