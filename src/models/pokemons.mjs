@@ -1,3 +1,8 @@
+/**
+ * Nom : Thanavine Le Cocq
+ * Date : 17.01.2025
+ **/
+
 // https://sequelize.org/docs/v7/models/data-types/
 
 const PokemonModel = (sequelize, DataTypes) => {

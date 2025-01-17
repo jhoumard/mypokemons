@@ -1,3 +1,8 @@
+/**
+ * Nom : Thanavine Le Cocq
+ * Date : 17.01.2025
+ **/
+
 let pokemons = [
   {
     id: 1,

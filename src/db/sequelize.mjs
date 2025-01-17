@@ -1,3 +1,8 @@
+/**
+ * Nom : Thanavine Le Cocq
+ * Date : 17.01.2025
+ **/
+
 import { Sequelize, DataTypes } from "sequelize";
 import { DB_USER, DB_PASSWORD } from "./env.mjs"
 
