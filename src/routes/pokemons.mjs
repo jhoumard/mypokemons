@@ -1,3 +1,6 @@
+//Matviy Lyubivyy 
+//17.01.25
+
 import express from "express";
 import { Pokemon } from "../db/sequelize.mjs";
 import { success } from "./helpers.mjs";
@@ -19,22 +22,37 @@ pokemonsRouter.get("/", (req, res) => {
 
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
-
+    Pokemon.findByPk(req.params.id)
+    .then((pokemon) => {
+        if (pokemon === null) {
+            const message = "Le pokemon demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
+            return res.status(404).json({ message });
+        }
+        const message = `Le pokemon dont l'id vaut ${pokemon.id} a bien été récupéré.`;
+        res.json(success(message, pokemon));
+    })
 });
 
 // Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
-
+    Pokemon.create(req.body)
+    .then((createdPokemon) => {
+        const message = `Le pokemon ${createdPokemon.name} a bien été créé !`;
+        res.json(success(message, createdPokemon));
+    })
 });
+
 
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
-
+    const message = "403: Vous n'avez pas les droits pour modifier les pokemons.";
+    return res.status(403).json({ message });
 });
 
 // Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
-
+    const message = "403: Vous n'avez pas les droits pour suprimer les pokemons.";
+    return res.status(403).json({ message });
 });
 
 export { pokemonsRouter };
