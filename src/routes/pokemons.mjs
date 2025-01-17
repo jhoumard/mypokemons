@@ -97,4 +97,15 @@ pokemonsRouter.delete("/:id", (req, res) => {
         });
 });
 
+pokemonsRouter.get("/cofffe", (req, res) => {
+
+    Pokemon.findByPk(req.params.id)
+
+        .catch((error) => {
+            const message =
+                "I'm a teapot";
+            res.status(418).json({ message, data: error });
+        });
+});
+
 export { pokemonsRouter };
