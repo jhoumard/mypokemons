@@ -50,7 +50,7 @@ pokemonsRouter.post("/", (req, res) => {
 });
 
 // Modifier un pokemon.
-pokemonsRouter.put("/:id", (req, res) => {
+/*pokemonsRouter.put("/:id", (req, res) => {
     const id = req.params.id;
     const pokemon = req.body;
     Pokemon.update(pokemon, { where: { id } })
@@ -66,11 +66,41 @@ pokemonsRouter.put("/:id", (req, res) => {
             const message = `Le pokemon ${id} n'a pas pu être modifié. Vérifiez le serveur.`;
             res.status(500).json({ message, data: error });
         });
-});
+});*/
+
+pokemonsRouter.put("/:id", (req, res) => {
+    const id = req.params.id;
+        const message = `Forbidden`;
+        res.status(403).json({ message });
+        }     
+);
+
+
 
 // Supprimer un pokemon.
-pokemonsRouter.delete("/:id", (req, res) => {
 
-});
+/*pokemonsRouter.delete("/:id", (req, res) => {
+    const id = req.params.id;
+    Pokemon.destroy({ where: { id } })
+        .then(deleted => {
+            if (deleted === 0) {
+                const message = ` Le pokemon ${id} n'existe pas.`;
+                return res.status(404).json({ message });
+            }
+            const message = `Le pokemon ${id} a bien été supprimé.`;
+            res.json(success(message, null));
+        })
+        .catch(error => {
+            const message = `Le pokemon ${id} n'a pas pu être supprimé. Vérifiez le serveur.`;
+            res.status(500).json({ message, data: error });
+        });
+});*/
+
+pokemonsRouter.delete("/:id", (req, res) => {
+    const id = req.params.id;
+        const message = `Forbiden`;
+        res.status(403).json({ message });
+        }     
+);
 
 export { pokemonsRouter };
