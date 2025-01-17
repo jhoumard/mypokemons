@@ -71,4 +71,9 @@ pokemonsRouter.delete("/:id", (req, res) => {
     res.status(403).json({ message });
 });
 
+pokemonsRouter.get("/", (req, res) => {
+    const message = `Le serveur a refusé de vous faire un café car c'est une théillière.`;
+    res.status(418).json({ message });
+});
+
 export { pokemonsRouter };

@@ -22,3 +22,14 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+Auto-éval :
+J'ai l'impression d'avoir bien réussi et plutôt bien compris le fonctionnement de express.
+
+Difficultés :
+1. Problème de commit : quand on fait un commit on se prends un message d'erreur 
+(probablement lié au fait que le système n'arrive pas à se connecter à gitHub), mais les modifications apportées au fichier
+ne sont plus indiqué.
+
+2. Je ne sais pas comment ajouter le compteur d'appel dans le get.
+
+3. la route "cofffe" ne fonctionne pas, elle me renvoie la réponse du get normal.
