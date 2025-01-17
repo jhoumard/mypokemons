@@ -6,7 +6,11 @@ import { success } from "./helpers.mjs";
 const pokemonsRouter = express();
 
 // Obtenir la liste des pokemons.
+var getPokemonsCount = 0;
 pokemonsRouter.get("/", (req, res) => {
+    getPokemonsCount++;
+    console.log(`${getPokemonsCount} requêtes de la liste des pokemons`);
+
     Pokemon.findAll()
     .then(pokemons => {
         const message = "La liste des pokemons a bien été récupérée !";
