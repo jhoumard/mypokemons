@@ -63,12 +63,14 @@ pokemonsRouter.post("/", (req, res) => {
 
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
-
+    const message = "L'accès à la modification est interdit"
+    return res.status(403).json(message)
 });
 
 // Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
-
+    const message = "L'accès à la suppression est interdit"
+    return res.status(403).json(message)
 });
 
 export { pokemonsRouter };
