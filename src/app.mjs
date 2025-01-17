@@ -1,3 +1,8 @@
+/*
+  Auteur: Vikki dolt
+  Date: 17.01.2025
+*/
+
 import express from "express";
 import { initDb, sequelize } from "./db/sequelize.mjs";
 
