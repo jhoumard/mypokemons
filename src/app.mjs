@@ -21,11 +21,22 @@ app.get('/', (req, res) => {
 });
 
 import { pokemonsRouter } from "./routes/pokemons.mjs";
-app.use("/api/pokemons", pokemonsRouter);
-
+var visits2 = 0;
+app.get('/', (req, res) => {
+  visits2++;
+  res.send(` (${visits2} requetes de la liste des pokemons`);
+  app.use("/api/pokemons", pokemonsRouter);
+  //écriture dans la console du nombre de fois ou nous somme allé sur le site
+  console.log(`${visits2} requetes de la liste pokemons`)
+});
 import { dimensionsRouter } from "./routes/dimensions.mjs";
 app.use("/api/dimensions", dimensionsRouter);
 
 app.listen(port, () =>
   console.log(`Notre application est démarée sur : http://localhost:${port}`)
 );
+/*
+import { pokemonsRouter } from "./cofffe";
+app.use("/api/dimensions", dimensionsRouter);
+
+ */
