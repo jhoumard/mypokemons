@@ -20,11 +20,21 @@ app.get('/', (req, res) => {
   res.send(`Hello, pokemons! (${visits} visites)`);
 });
 
+
+app.get('/cofffe', (req, res) => {
+  return res.status(418).json("418 I'm a teapot");
+});
+
+
+
 import { pokemonsRouter } from "./routes/pokemons.mjs";
 app.use("/api/pokemons", pokemonsRouter);
 
 import { dimensionsRouter } from "./routes/dimensions.mjs";
 app.use("/api/dimensions", dimensionsRouter);
+
+
+
 
 app.listen(port, () =>
   console.log(`Notre application est démarée sur : http://localhost:${port}`)
