@@ -1,6 +1,13 @@
+//Artur Tudor
+//17.01.2025
+//Fichier: pokemons.mjs
+
 import express from "express";
+
 import { Pokemon } from "../db/sequelize.mjs";
+
 import { success } from "./helpers.mjs";
+import { pokemons } from "../db/mock-pokemon.mjs";
 
 const pokemonsRouter = express();
 
@@ -19,7 +26,21 @@ pokemonsRouter.get("/", (req, res) => {
 
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
-
+    Pokemon.findByPk(req.params.id)
+    .then((pokemon) => {
+        if(pokemon === null ) {
+            const message = 
+                "Error 404: Le produit demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
+            return res.status(404).json({ message });
+        }
+        const message = `Le Pokemon dont l'id vaut ${pokemon.id} a bien été récupéré.`;
+        res.json(success(message, pokemon));
+        })
+        .catch((error) => {
+            const message = 
+                "Error 500: Le Pokemon n'a pas pu être récupéré. Merci de réessayer dans quelques instants.";
+            res.status(500).json({message, data: error});
+        });
 });
 
 // Ajouter un pokemon.
