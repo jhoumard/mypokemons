@@ -21,8 +21,8 @@ const PokemonModel = (sequelize, DataTypes) => {
                 },
                 validate: {
                     is: {
-                        args: /^[A-Za-z\séè]*$/,
-                        msg: "Seules les lettres, les espaces et é et è sont autorisées.",
+                        args: /^[A-Za-zéè]*$/,
+                        msg: "Seules les lettres et é et è sont autorisées.",
                     },
                     notEmpty: {
                         msg: "Le nom ne peut pas être vide.",
