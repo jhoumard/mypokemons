@@ -28,8 +28,8 @@ pokemonsRouter.get("/:id", (req, res) => {
 // A noter ici le return pour interrompre l'exécution du code
                 return res.status(404).json({ message });
             }
-            const message = `Le produit dont l'id vaut ${product.id} a bien été récupéré.`;
-            res.json(success(message, product));
+            const message = `Le produit dont l'id vaut ${pokemons.id} a bien été récupéré.`;
+            res.json(success(message, pokemons));
         })
         .catch((error) => {
             const message =
