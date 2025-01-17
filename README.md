@@ -22,3 +22,4 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+je trouve que je me suis bien donné pour se test même si j'ai pas fait l'exercice 5 car j'ai oublié comment faire sinon pour la theorie il y a juste les exemples precis que je ne me rappelais plus sinon je pense que j'ai fait le reste tout juste 
