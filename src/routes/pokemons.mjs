@@ -6,17 +6,22 @@ Description : Router of Pokemones for pokemon API
 
 import express from "express";
 import { Pokemon } from "../db/sequelize.mjs";
-import { success } from "./helpers.mjs";
+import { success, successCounter } from "./helpers.mjs";
 import { ValidationError } from "sequelize";
 
 const pokemonsRouter = express();
 
+//Compteur d'appel à la liste
+let visitsList = 0
+
 // Obtenir la liste des pokemons.
 pokemonsRouter.get("/", (req, res) => {
+    visitsList++
     Pokemon.findAll()
     .then(pokemons => {
-        const message = "La liste des pokemons a bien été récupérée !";
-        res.json(success(message, pokemons));
+        const message = "La liste des Pokemons à bien été récupérée !";
+        const counter = `${visitsList} requêtes de la liste des pokemons`
+        res.json(successCounter(message, counter, pokemons));
     })
     .catch(error => {
         const message = "Erreur 500: La liste des pokemons n'a pas pu être récupérée. Merci de réessayer plus tard.";
