@@ -9,6 +9,12 @@ Chris Brandt
 */
 const pokemonsRouter = express();
 
+// Obtention de l'erreur 418
+pokemonsRouter.get("/coffee", (req,res) => {
+    const message = "Erreur 418: Le serveur refuse de faire un café car c'est une théière.";
+    return res.status(418).json({message});
+});
+
 // Obtenir la liste des pokemons.
 pokemonsRouter.get("/", (req, res) => {
     let increment = x => { return x + 1};
@@ -67,5 +73,6 @@ pokemonsRouter.delete("/:id", (req, res) => {
     const message = "Erreur 403: Forbidden.";
     return res.status(403).json({message});
 });
+
 
 export { pokemonsRouter };
