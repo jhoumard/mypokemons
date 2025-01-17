@@ -1,24 +1,12 @@
-## Consigne
+Auto-évaluation : Jérémie Chevalley.
 
-1. Créer une nouvelle branche nommée "test17_<votre_nom>" [max 4 lettres du nom de famille, sans espace, sans accent] (exemple: test17_houm):
-git checkout -b <branch_name>
+PRATIQUE
+Je pense m'être plus bien débrouillé, il m'as fallut réfléchir à chaque étapes, 
+En revanche j'ai eu des difficultés particulières sur le compteur pour les requêtes de la liste
+qui m'as obligé à contourner le problème en recréant un nouveau code json de succès, comme vous pourrez voir le "Helper.mjs"
 
-2. Si pas déjà fait, installer Express et Nodemon:  
-npm install express --save  
-npm install nodemon --save-dev
+THÉORIE
+Il me semble aussi avoir plutôt réussi cette partie malgré mon incertitude à propos des donnée JSON et de na pas avoir trouvé une code de succès 200-299.
 
-3. Installer Sequelize et le driver MySQL:  
-npm install sequelize --save  
-npm install mysql2 --save-dev
+Au final, je suis satisfait de mes acquis lors de ce module, et j'ai l'impréssion d'avoir réellement progressé en JavaScript
 
-4. Créer la base de données MySQL pour les Pokemons (p. ex "db_pokemons")
-
-5. Renseigner les informations de connexion au serveur MySQL:
-Copier 'example.env.mjs' et renommer le nouveau fichier 'env.mjs', dans lequel on renseignera l'utilisateur et son mot de passe.
-On évite ainsi de publier les informations de connexion sur GIT.
-
-6. Incrémenter la version dans "package.json"
-
-7. Commit et push
-
-## Auto-évaluation, difficultés rencontrées
