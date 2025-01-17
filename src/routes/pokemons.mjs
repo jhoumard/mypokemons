@@ -50,12 +50,14 @@ pokemonsRouter.post("/", (req, res) => {
 
 // Modifier un pokemon.
 pokemonsRouter.put("/:id", (req, res) => {
-
+    const msg = "Modification refusée";
+    res.status(403).json({ msg });
 });
 
 // Supprimer un pokemon.
 pokemonsRouter.delete("/:id", (req, res) => {
-
+    const msg = "Suppression refusée";
+    res.status(403).json({ msg });
 });
 
 export { pokemonsRouter };
