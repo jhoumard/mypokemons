@@ -19,12 +19,34 @@ pokemonsRouter.get("/", (req, res) => {
 
 // Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
-
+    const id = req.params.id;
+    Pokemon.findByPk(id)
+        .then(pokemon => {
+            if (pokemon === null) {
+                const message = `Le pokemon ${id} n'existe pas.`;
+                return res.status(404).json({ message });
+            }
+            const message = `Le pokemon ${id} a bien été récupéré.`;
+            res.json(success(message, pokemon));
+        })
+        .catch(error => {
+            const message = `Le pokemon ${id} n'a pas pu être récupéré. Vérifiez le serveur.`;
+            res.status(500).json({ message, data: error });
+        });
 });
 
 // Ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
-
+    const pokemon = req.body;
+    Pokemon.create(pokemon)
+        .then(newPokemon => {
+            const message = `Le pokemon ${newPokemon.name} a bien été ajouté.`;
+            res.json(success(message, newPokemon));
+        })
+        .catch(error => {
+            const message = `Le pokemon n'a pas pu être ajouté. Vérifiez le serveur.`;
+            res.status(500).json({ message, data: error });
+        });
 });
 
 // Modifier un pokemon.
