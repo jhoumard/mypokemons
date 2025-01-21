@@ -22,3 +22,10 @@ On évite ainsi de publier les informations de connexion sur GIT.
 7. Commit et push
 
 ## Auto-évaluation, difficultés rencontrées
+Pour la partie théorique j'ai trouvé que c'etait plutot pas mal donc je pense que je n'ai pas échoué tant que ça comme je le pensais
+car je n'etais pas très serain d'avoir une partie théorique.
+
+Pour la partie pratique j'ai pu m'en sortir grace au exercice que nous avons fait durant le module donc je pense que ça devrait aller aussi.
+
+J'ai rencontré des difficulté pour l'exercice 5 car je n'avais pas vraiment compris ce qu'il fallait faire mais j'ai tout de même fait de mon mieux.
+Je suis fier de ce que j'ai accompli et j'espère que vous le serez tout autant.

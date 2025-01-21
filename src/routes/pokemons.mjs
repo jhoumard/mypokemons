@@ -39,19 +39,59 @@ pokemonsRouter.get("/:id", (req, res) => {
         });
 });
 
-// Ajouter un pokemon.
+// 2. completer la route qui permet d'ajouter un pokemon.
 pokemonsRouter.post("/", (req, res) => {
-
+    Pokemon.create(req.body)
+        .then(createdPokemon => {
+            const message = `Le pokemon ${createdPokemon.name} a bel et bien été créé !`;
+            res.json(success(message, createdPokemon));
+        })
+        .catch(error => {
+            const message = "Erreur 500: Le pokemon n'a pas pu être ajouté. Veuillez de retenter plus tard.";
+            res.status(500).json({ message, data: error });
+        });
 });
 
-// Modifier un pokemon.
+// 3. La modification des pokemons est refusé.
 pokemonsRouter.put("/:id", (req, res) => {
-
+    Pokemon.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(() => {
+            const message = `Erreur 403: Vous n'avez pas le droit de modifier les pokemons.`;
+            res.status(403).json({ message, data: error });
+        })
+        .catch(error => {
+            const message = "Erreur 500: Le pokemon n'a pas pu être modifié. Veuillez de retenter plus tard.";
+            res.status(500).json({ message, data: error });
+        });
 });
 
-// Supprimer un pokemon.
+// 3. La suppressions des pokemons est refusé.
 pokemonsRouter.delete("/:id", (req, res) => {
+    Pokemon.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(() => {
+            const message = `Erreur 403: Vous n'avez pas le droit de supprimer les pokemons.`;
+            res.status(403).json({ message, data: error });
+        })
+        .catch(error => {
+            const message = "Erreur 500: Le pokemon n'a pas pu être supprimé. Veuillez de retenter plus tard.";
+            res.status(500).json({ message, data: error });
+        });
+});
 
+pokemonsRouter.get("http://localhost:3000/cofffe", (req, res) => {
+    Pokemon.findAll()
+        .then(() => {
+            const message = "418 I'm a teapot.";
+            res.status(418).json({ message, data: error });
+        })
 });
 
 export { pokemonsRouter };
