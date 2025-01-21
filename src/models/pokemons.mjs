@@ -39,9 +39,11 @@ const PokemonModel = (sequelize, DataTypes) => {
                     },
                     min: {
                         args: [1],
+                         msg: "Dimension ID: min 1."
                     },
                     max: {
-                        args: [3]
+                        args: [3],
+                        msg: "Dimension ID: max 3."
                     },
                 }
             },
