@@ -20,6 +20,11 @@ app.get('/', (req, res) => {
   res.send(`Hello, pokemons! (${visits} visites)`);
 });
 
+// 7. Ajouter à l’application la route "/cofffe" qui retourne le statut >418 I'm a teapot>.
+app.get('/cofffe', (req, res) => {
+  res.status(418).send(`No way!`);
+});
+
 import { pokemonsRouter } from "./routes/pokemons.mjs";
 app.use("/api/pokemons", pokemonsRouter);
 
