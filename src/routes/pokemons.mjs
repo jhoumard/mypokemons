@@ -27,14 +27,14 @@ pokemonsRouter.get("/", (req, res) => {
 // 1. Obtenir un pokemon en particulier.
 pokemonsRouter.get("/:id", (req, res) => {
     Pokemon.findByPk(req.params.id)
-    .then(p => {
-        if (p === null) {
+    .then(pokemon => {
+        if (pokemon === null) {
             const message = "Le pokemon demandé n'existe pas. Merci de réessayer avec un autre identifiant.";
             return res.status(404).json({ message });
         }
 
-        const message = `Le pokemon dont l'id vaut ${p.id} a bien été récupéré.`;
-        res.json(success(message, p));
+        const message = `Le pokemon dont l'id vaut ${pokemon.id} a bien été récupéré.`;
+        res.json(success(message, pokemon));
     });
 });
 
