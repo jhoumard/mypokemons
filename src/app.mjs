@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 // 7. Ajouter à l’application la route "/cofffe" qui retourne le statut >418 I'm a teapot>.
-app.get('/coffee', (req, res) => {
+app.get('/cofffe', (req, res) => {
   res.status(418).send(`No way!`);
 });
 
